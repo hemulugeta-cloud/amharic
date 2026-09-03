@@ -1,0 +1,16 @@
+{
+  "appId": "com.fideltemari.app",
+  "appName": "Fidel Temari",
+  "webDir": ".",
+  "bundledWebRuntime": false,
+  "backgroundColor": "#f7f5ef",
+  "server": {
+    "androidScheme": "https"
+  },
+  "ios": {
+    "contentInset": "always"
+  },
+  "android": {
+    "allowMixedContent": false
+  }
+}
