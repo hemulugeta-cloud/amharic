@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>አማርኛ እንማር — Full Learning App</title>
+<style>
+:root{--bg:#f6f8fb;--card:#fff;--text:#1f2937;--muted:#667085;--line:#e4e7ec;--accent:#267a53;--accentsoft:#eaf7f0;--gold:#b7791f;--blue:#2457c5;--danger:#b42318;--ok:#067647;--shadow:0 10px 30px rgba(16,24,40,.08)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif}button,input,select{font:inherit}button{cursor:pointer;transition:transform .12s ease,box-shadow .12s ease}button:active{transform:scale(.97)}.app{max-width:1280px;margin:auto;padding:14px}.topbar{position:sticky;top:0;z-index:20;background:rgba(246,248,251,.94);backdrop-filter:blur(10px);display:flex;gap:12px;align-items:center;justify-content:space-between;padding:10px 0 12px;flex-wrap:wrap}.brand{display:flex;gap:10px;align-items:center}.logo{width:50px;height:50px;border-radius:15px;background:white;border:1px solid var(--line);box-shadow:var(--shadow);display:grid;place-items:center;font-size:29px;font-weight:900;color:var(--accent)}h1,h2,h3,h4,p{margin-top:0}.brand h1{font-size:1.22rem;margin-bottom:2px}.brand small{color:var(--muted)}.controls{display:flex;gap:8px;flex-wrap:wrap}.pill,.secondary,.primary,.ghost{border-radius:12px;padding:10px 13px;border:1px solid var(--line);background:#fff}.primary{background:var(--accent);color:white;border-color:var(--accent);font-weight:800}.secondary{font-weight:700}.ghost{background:transparent}.hero{display:grid;grid-template-columns:1.45fr 1fr;gap:18px;background:linear-gradient(135deg,#fff,#edf8f2);border:1px solid #dceee4;border-radius:26px;padding:24px;box-shadow:var(--shadow)}.hero h2{font-size:2rem;margin-bottom:8px}.hero p{color:var(--muted);font-size:1.02rem}.hero-actions,.inline{display:flex;gap:9px;flex-wrap:wrap;align-items:center}.progress-card,.card,.panel,.unit,.mini{background:#fff;border:1px solid var(--line);border-radius:18px}.progress-card{padding:16px}.progress-head{display:flex;justify-content:space-between;font-weight:800}.bar{height:12px;background:#eef1f4;border-radius:999px;overflow:hidden;margin:10px 0}.bar>div{height:100%;background:var(--accent);width:0;transition:width .4s ease}.muted{color:var(--muted)}.section{margin-top:22px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.card{padding:17px;box-shadow:0 2px 8px rgba(16,24,40,.03)}.card:hover{box-shadow:var(--shadow);transform:translateY(-1px)}.icon{font-size:2rem}.card h4{margin:9px 0 5px}.card p{color:var(--muted)}.card button{width:100%}.path{display:flex;gap:12px;overflow:auto;padding-bottom:8px}.unit{min-width:210px;padding:16px}.badge{display:inline-block;border-radius:999px;padding:5px 8px;background:var(--accentsoft);color:var(--ok);font-size:.78rem;font-weight:900}.panel{display:none;padding:20px;margin-top:18px;box-shadow:var(--shadow)}.panel.active{display:block}.panel-head{display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap}.close{border:0;background:#f2f4f7;border-radius:10px;padding:8px 11px}.tabs{display:flex;gap:8px;overflow:auto;padding:4px 0 10px}.tab{white-space:nowrap;border:1px solid var(--line);background:#fff;padding:9px 12px;border-radius:999px;font-weight:700}.tab.active{background:var(--accent);color:white;border-color:var(--accent)}.vocab-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.vocab{background:#fbfcfd;border:1px solid var(--line);border-radius:14px;padding:13px;text-align:center}.pic{font-size:2.7rem}.amh{font-size:1.5rem;font-weight:900;margin:4px 0}.eng{color:var(--muted)}.game-picker{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}.game-choice{padding:12px;border:1px solid var(--line);border-radius:14px;background:#fff;font-weight:800}.game-choice.active{background:var(--accentsoft);border-color:#a9dcc0;color:var(--ok)}.game-stage{border:1px dashed #ccd2d8;border-radius:18px;padding:16px;background:#fcfdfd}.game-toolbar{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:4px}.round-note{font-size:.92rem;color:var(--muted)}.match-board{display:grid;grid-template-columns:1fr 1fr;gap:16px}.image-slots,.word-bank{display:grid;gap:10px}.image-slot{min-height:108px;border:2px dashed #cfd6dd;background:#fff;border-radius:16px;padding:12px;display:flex;align-items:center;justify-content:space-between;gap:12px}.image-slot .slot-pic{font-size:3rem}.image-slot .label{font-weight:700;color:var(--muted)}.image-slot.dragover{border-color:var(--blue);background:#eef4ff}.image-slot.correct{border-color:#75c69a;background:#ecfdf3}.word-tile{border:1px solid var(--line);border-radius:13px;background:white;padding:13px;text-align:center;font-size:1.22rem;font-weight:900;box-shadow:0 3px 8px rgba(16,24,40,.05);touch-action:none}.word-tile[draggable="true"]{cursor:grab}.word-tile.selected{outline:3px solid #93b4ff}.word-tile.used{opacity:.35;pointer-events:none}.feedback{min-height:26px;margin-top:10px;font-weight:800}.feedback.ok{color:var(--ok)}.feedback.bad{color:var(--danger)}.quiz-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.quiz-option{padding:14px;border:1px solid var(--line);border-radius:13px;background:#fff}.quiz-option.correct{background:#ecfdf3;border-color:#75c69a}.quiz-option.wrong{background:#fff1f0;border-color:#f0b4ae}.prompt-card{text-align:center;padding:20px}.prompt-big{font-size:3rem;font-weight:900;margin:8px 0}.builder-bank{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}.letter-chip{padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:#fff;font-size:1.4rem;font-weight:900}.letter-chip:disabled{opacity:.35}.answer-line{min-height:60px;border:2px dashed #cfd6dd;border-radius:14px;margin:12px auto;padding:10px;max-width:620px;font-size:1.5rem;font-weight:900}.fidel-controls{display:flex;gap:8px;flex-wrap:wrap}.fidel-row{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-top:12px}.fidel-btn{padding:16px 6px;border:1px solid var(--line);border-radius:12px;background:#fff;font-size:1.8rem;font-weight:800}.fidel-btn:hover{background:var(--accentsoft)}.big-letter{font-size:5rem;text-align:center;margin:12px 0}.family-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}.family-cell{padding:9px 4px;border-bottom:1px solid #eee;text-align:center;font-size:1.25rem}.lesson-list{display:grid;gap:10px}.lesson{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:13px;border:1px solid var(--line);border-radius:14px;background:#fff}.lesson-num{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--accentsoft);color:var(--ok);font-weight:900}.conversation{display:grid;gap:10px}.bubble{max-width:760px;border-radius:16px;padding:13px 15px;background:#f2f4f7}.bubble.me{margin-left:auto;background:#eaf7f0}.bubble .am{font-size:1.25rem;font-weight:800}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.stat{padding:14px;border:1px solid var(--line);border-radius:14px;background:#fff}.stat strong{display:block;font-size:1.35rem}.footer{text-align:center;color:var(--muted);padding:30px 10px}.mode-kids .vocab .pic{font-size:3.4rem}.mode-kids .amh{font-size:1.7rem}.mode-kids .card,.mode-kids .unit{border-width:2px}.mode-adult .hero{background:#fff}.sr{position:absolute;left:-9999px}.trace-layout{display:grid;grid-template-columns:320px 1fr;gap:18px;align-items:start}.trace-side{background:#fbfcfd;border:1px solid var(--line);border-radius:16px;padding:14px}.trace-family-strip{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin:12px 0}.trace-letter-btn{min-height:64px;border:2px solid var(--line);border-radius:13px;background:#fff;font-size:2rem;font-weight:900}.trace-letter-btn.active{border-color:var(--accent);background:var(--accentsoft);color:var(--ok)}.trace-canvas-wrap{position:relative;min-height:430px;border:2px solid var(--line);border-radius:18px;background:#fff;overflow:hidden;touch-action:none}.trace-guide{position:absolute;inset:0;display:grid;place-items:center;font-size:19rem;font-weight:900;color:rgba(16,24,40,.10);pointer-events:none;user-select:none}.trace-canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none}.trace-current{text-align:center;font-size:2.2rem;font-weight:900;margin:4px 0}.trace-help{color:var(--muted);font-size:.95rem}.trace-nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.trace-tools{display:flex;gap:8px;flex-wrap:wrap;justify-content:space-between;align-items:center;margin-bottom:10px}.trace-complete{padding:10px 12px;border-radius:12px;background:#ecfdf3;color:var(--ok);font-weight:800;display:none}
+.toast{position:fixed;left:50%;top:18px;transform:translateX(-50%) translateY(-16px);background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 20px;box-shadow:var(--shadow);z-index:200;display:flex;gap:10px;align-items:center;font-weight:900;opacity:0;transition:all .35s ease;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast .toast-icon{font-size:1.7rem}
+.confetti-piece{position:fixed;top:-12px;width:8px;height:14px;z-index:190;border-radius:2px;pointer-events:none;animation:confetti-fall linear forwards}
+@keyframes confetti-fall{to{transform:translateY(110vh) rotate(540deg);opacity:.15}}
+.flame{display:inline-block;animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.25)}}
+.badge-summary{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:14px}
+.badge-count{background:#fbfcfd;border:1px solid var(--line);border-radius:14px;padding:10px 16px;text-align:center;font-size:1.1rem;min-width:84px}
+.badge-count strong{display:block;font-size:1.3rem}
+.badge-count span{color:var(--muted);font-size:.78rem}
+.badge-grid{display:flex;flex-wrap:wrap;gap:8px}
+.badge-chip{border-radius:999px;padding:7px 12px;font-size:.82rem;font-weight:800;display:flex;align-items:center;gap:6px;border:1px solid var(--line)}
+.badge-chip.badge-bronze{background:#fbeee0;color:#96501c}
+.badge-chip.badge-silver{background:#eef1f4;color:#51586a}
+.badge-chip.badge-gold{background:#fdf3d8;color:#946200}
+.badge-chip.badge-platinum{background:#eaf3ff;color:#1c4a96}
+select:disabled{cursor:not-allowed}
+@media(max-width:980px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.vocab-grid{grid-template-columns:repeat(3,1fr)}.game-picker{grid-template-columns:repeat(2,1fr)}.trace-layout{grid-template-columns:1fr}.trace-canvas-wrap{min-height:390px}.trace-guide{font-size:15rem}}
+@media(max-width:650px){.app{padding:9px}.hero{padding:18px}.hero h2{font-size:1.55rem}.grid{grid-template-columns:1fr}.vocab-grid{grid-template-columns:repeat(2,1fr)}.match-board{grid-template-columns:1fr}.fidel-row,.family-grid{grid-template-columns:repeat(4,1fr)}.stats{grid-template-columns:repeat(2,1fr)}.quiz-grid{grid-template-columns:1fr}.brand h1{font-size:1rem}.image-slot{min-height:92px}.panel{padding:14px}}
+</style>
+</head>
+<body>
+<div class="app mode-kids" id="app">
+<header class="topbar">
+  <div class="brand"><div class="logo">ሀ</div><div><h1>አማርኛ እንማር</h1><small>Learn Amharic • Starter to Advanced</small></div></div>
+  <div class="controls"><select class="pill" id="levelSelect"><option>Starter</option><option>Beginner</option><option>Elementary</option><option>Intermediate</option><option>Advanced</option></select><select class="pill" id="modeSelect"><option value="kids">Kids</option><option value="teen">Teen</option><option value="adult">Adult</option></select><button class="pill" id="resetProgress">Reset Progress</button></div>
+</header>
+<section class="hero"><div><h2>Learn Amharic through pictures, sound, practice and real life.</h2><p>Master Fidel, build useful vocabulary, practice listening and writing, and progress into everyday conversation, reading and grammar. Now with 500+ practice questions per game type, correct/incorrect sound feedback, and earnable badges.</p><div class="hero-actions"><button class="primary" onclick="openPanel('learn')">Continue Learning</button><button class="secondary" onclick="openPanel('games')">Play a Game</button><button class="secondary" onclick="openPanel('placement')">Placement Test</button></div></div><div class="progress-card"><div class="progress-head"><span>Learning Progress</span><span id="xpText">0 XP</span></div><div class="bar"><div id="xpBar"></div></div><div class="muted" id="progressText">Start your first activity.</div></div></section>
+
+<section class="section"><h3>Learn your way</h3><div class="grid">
+<div class="card"><div class="icon">🛤️</div><h4>Guided Course</h4><p>Progress from Fidel and first words to conversation, reading, writing and grammar.</p><button class="secondary" onclick="openPanel('learn')">Open Course</button></div>
+<div class="card"><div class="icon">🖼️</div><h4>Picture Vocabulary</h4><p>248 words across 13 categories: animals, food, people, clothing, body parts, rooms, appliances, school, nature, transport, colors, daily life and numbers.</p><button class="secondary" onclick="openPanel('vocab')">Explore Vocabulary</button></div>
+<div class="card"><div class="icon">🎮</div><h4>Games & Exercises</h4><p>Six game types with 500+ question variations each — matching, listening, missing letters, word building, multiple choice and a Fidel quiz — plus sound feedback and badges.</p><button class="secondary" onclick="openPanel('games')">Play Games</button></div>
+<div class="card"><div class="icon">🔤</div><h4>Fidel Lab</h4><p>Practice all 34 Fidel families, seven orders, recognition and pronunciation.</p><button class="secondary" onclick="openPanel('fidel')">Open Fidel Lab</button></div>
+<div class="card"><div class="icon">✍️</div><h4>Tracing Practice</h4><p>Trace every Fidel family using a finger, mouse, or stylus. Move through all seven letters and all 34 families, earning a badge for each family.</p><button class="secondary" onclick="openPanel('tracing')">Start Tracing</button></div>
+<div class="card"><div class="icon">💬</div><h4>Conversations</h4><p>Greetings, family, home, food, shopping, school, travel and everyday situations.</p><button class="secondary" onclick="openPanel('conversation')">Practice Speaking</button></div>
+<div class="card"><div class="icon">🔁</div><h4>Review & Progress</h4><p>Review learned material, see XP and level, and browse every badge you've earned.</p><button class="secondary" onclick="openPanel('review')">Review Progress</button></div>
+</div></section>
+
+<section class="section"><h3>Course map</h3><div class="path" id="coursePath"></div></section>
+
+<div class="panel" id="learn"><div class="panel-head"><div><h3>Guided Learning Course</h3><p class="muted">Short lessons that move from recognition to recall and real-world use.</p></div><button class="close" onclick="closePanels()">✕</button></div><div class="lesson-list" id="lessonList"></div></div>
+
+<div class="panel" id="vocab"><div class="panel-head"><div><h3>Picture Vocabulary</h3><p class="muted">Tap Listen to hear the Amharic word when supported by your device. Includes an "All Categories" tab with all 248 words.</p></div><button class="close" onclick="closePanels()">✕</button></div><div class="tabs" id="vocabTabs"></div><div class="vocab-grid" id="vocabGrid"></div></div>
+
+<div class="panel" id="games"><div class="panel-head"><div><h3>Games & Exercises</h3><p class="muted">Each round uses new items until the pool has been fully used. Correct and incorrect answers play a sound, and finishing a round can earn a Bronze, Silver, Gold or Platinum badge.</p></div><div><strong>Score: <span id="score">0</span></strong> · <span id="roundCount">Round 1</span></div><button class="close" onclick="closePanels()">✕</button></div>
+<div class="game-picker" id="gamePicker"></div><div class="inline"><label>Category <select class="pill" id="gameCategory"></select></label><label>Items / round <select class="pill" id="roundSize"><option>4</option><option selected>6</option><option>8</option><option>10</option></select></label><button class="secondary" onclick="startCurrentGame()">New Round</button></div><div class="game-stage" id="gameStage"></div></div>
+
+<div class="panel" id="fidel"><div class="panel-head"><div><h3>Fidel Lab — 34 Families</h3><p class="muted">Choose a family, then practice all seven forms.</p></div><button class="close" onclick="closePanels()">✕</button></div><div class="fidel-controls"><select class="pill" id="familySelect"></select><button class="secondary" onclick="playFamily()">🔊 Play Family</button><button class="secondary" onclick="showAllFamilies()">View All Families</button></div><div class="fidel-row" id="fidelRow"></div><div class="big-letter" id="bigLetter">ሀ</div><div class="muted" style="text-align:center" id="letterHint">Select a letter</div><div id="allFamilies" style="display:none;margin-top:18px"></div></div>
+<div class="panel" id="tracing"><div class="panel-head"><div><h3>Fidel Tracing — 34 Families</h3><p class="muted">Choose a family, select any of its seven letters, and trace directly over the large guide.</p></div><button class="close" onclick="closePanels()">✕</button></div><div class="trace-layout"><div class="trace-side"><label><strong>Fidel family</strong><select class="pill" id="traceFamilySelect" style="width:100%;margin-top:7px"></select></label><div class="trace-nav"><button class="secondary" onclick="previousTraceFamily()">← Previous Family</button><button class="secondary" onclick="nextTraceFamily()">Next Family →</button></div><div class="trace-family-strip" id="traceFamilyStrip"></div><div class="trace-current" id="traceCurrentLabel">ሀ</div><div class="trace-help">The entire 7-letter family stays visible. Tap a letter above to choose what you want to trace.</div><div class="trace-nav"><button class="secondary" onclick="speakTraceLetter()">🔊 Listen</button><button class="secondary" onclick="clearTrace()">Clear Tracing</button><button class="primary" onclick="markTraceComplete()">✓ I Traced It</button></div><div class="trace-complete" id="traceCompleteMsg">Great work! Choose the next letter when ready.</div></div><div><div class="trace-tools"><div><strong id="traceTitle">Trace ሀ</strong><div class="trace-help">Use your finger, stylus, or mouse. Follow the faded Fidel shape.</div></div><button class="ghost" onclick="clearTrace()">↻ Reset</button></div><div class="trace-canvas-wrap" id="traceCanvasWrap"><div class="trace-guide" id="traceGuide">ሀ</div><canvas class="trace-canvas" id="traceCanvas"></canvas></div></div></div></div>
+
+<div class="panel" id="conversation"><div class="panel-head"><div><h3>Everyday Conversations</h3><p class="muted">Beginner phrases with English support. More advanced units can hide translations.</p></div><button class="close" onclick="closePanels()">✕</button></div><div class="tabs" id="conversationTabs"></div><div class="conversation" id="conversationBody"></div></div>
+
+<div class="panel" id="review"><div class="panel-head"><div><h3>Review & Progress</h3><p class="muted">Progress is saved on this device.</p></div><button class="close" onclick="closePanels()">✕</button></div><div class="stats" id="stats"></div><h4 style="margin-top:18px">🏅 Your Badges</h4><div id="badgeShelf"></div><h4 style="margin-top:18px">Quick Review</h4><div class="vocab-grid" id="reviewGrid"></div></div>
+
+<div class="panel" id="placement"><div class="panel-head"><div><h3>Placement Test</h3><p class="muted">A simple adaptive framework covering Fidel, common vocabulary, sentences and practical language.</p></div><button class="close" onclick="closePanels()">✕</button></div><div id="placementBody"><div class="prompt-card"><div class="prompt-big">ሀ</div><p>Do you recognize and read common Fidel characters?</p><div class="inline" style="justify-content:center"><button class="secondary" onclick="placementAnswer(0)">Not yet</button><button class="primary" onclick="placementAnswer(1)">Yes</button></div></div></div></div>
+<div class="footer">Single-file HTML app • Mobile friendly • GitHub Pages ready • Progress, badges and question history saved locally • Sound effects work fully offline</div>
+</div>
+<script>
+const V={
+Animals:[['dog','🐕','ውሻ','Dog'],['cat','🐈','ድመት','Cat'],['cow','🐄','ላም','Cow'],['horse','🐎','ፈረስ','Horse'],['sheep','🐑','በግ','Sheep'],['goat','🐐','ፍየል','Goat'],['lion','🦁','አንበሳ','Lion'],['elephant','🐘','ዝሆን','Elephant'],['bird','🐦','ወፍ','Bird'],['fish','🐟','ዓሣ','Fish'],['chicken','🐔','ዶሮ','Chicken'],['rabbit','🐇','ጥንቸል','Rabbit'],['monkey','🐒','ዝንጀሮ','Monkey'],['snake','🐍','እባብ','Snake'],['frog','🐸','እንቁራሪት','Frog'],['duck','🦆','ዳክዬ','Duck'],['camel','🐫','ግመል','Camel'],['bee','🐝','ንብ','Bee'],['mouse','🐭','አይጥ','Mouse'],['turtle','🐢','ኤሊ','Turtle']],
+Food:[['apple','🍎','ፖም','Apple'],['banana','🍌','ሙዝ','Banana'],['milk','🥛','ወተት','Milk'],['water','💧','ውሃ','Water'],['bread','🍞','ዳቦ','Bread'],['egg','🥚','እንቁላል','Egg'],['meat','🥩','ስጋ','Meat'],['carrot','🥕','ካሮት','Carrot'],['coffee','☕','ቡና','Coffee'],['tea','🍵','ሻይ','Tea'],['orange','🍊','ብርቱካን','Orange'],['honey','🍯','ማር','Honey'],['rice','🍚','ሩዝ','Rice'],['potato','🥔','ድንች','Potato'],['onion','🧅','ሽንኩርት','Onion'],['tomato','🍅','ቲማቲም','Tomato'],['sugar','🍬','ስኳር','Sugar'],['salt','🧂','ጨው','Salt'],['cheese','🧀','አይብ','Cheese'],['mango','🥭','ማንጎ','Mango']],
+People:[['mother','👩','እናት','Mother'],['father','👨','አባት','Father'],['brother','👦','ወንድም','Brother'],['sister','👧','እህት','Sister'],['baby','👶','ሕፃን','Baby'],['grandmother','👵','አያት','Grandmother'],['grandfather','👴','አያት','Grandfather'],['child','🧒','ልጅ','Child'],['teacher','🧑‍🏫','መምህር','Teacher'],['doctor','🧑‍⚕️','ሐኪም','Doctor'],['friend','🧑‍🤝‍🧑','ጓደኛ','Friend'],['family','👨‍👩‍👧','ቤተሰብ','Family'],['uncle','🧔','አጎት','Uncle'],['aunt','👩‍🦱','አክስት','Aunt'],['husband','🤵','ባል','Husband'],['wife','👰','ሚስት','Wife'],['boy','👦','ወንድ ልጅ','Boy'],['girl','👧','ሴት ልጅ','Girl'],['man','👨','ወንድ','Man'],['woman','👩','ሴት','Woman']],
+Body:[['head','🙂','ራስ','Head'],['eye','👁️','ዓይን','Eye'],['ear','👂','ጆሮ','Ear'],['nose','👃','አፍንጫ','Nose'],['mouth','👄','አፍ','Mouth'],['hand','✋','እጅ','Hand'],['leg','🦵','እግር','Leg'],['foot','🦶','እግር ጫማ','Foot'],['tooth','🦷','ጥርስ','Tooth'],['heart','❤️','ልብ','Heart'],['arm','💪','ክንድ','Arm'],['finger','☝️','ጣት','Finger'],['hair','💇','ፀጉር','Hair'],['lip','💋','ከንፈር','Lip'],['tongue','👅','ምላስ','Tongue'],['nail','💅','ጥፍር','Nail'],['knee','🦵','ጉልበት','Knee'],['elbow','💪','ክርን','Elbow'],['chest','🫁','ደረት','Chest'],['voice','🗣️','ድምጽ','Voice']],
+Clothing:[['shirt','👕','ሸሚዝ','Shirt'],['pants','👖','ሱሪ','Pants'],['dress','👗','ቀሚስ','Dress'],['shoes','👟','ጫማ','Shoes'],['socks','🧦','ካልሲ','Socks'],['jacket','🧥','ጃኬት','Jacket'],['hat','🧢','ኮፍያ','Hat'],['scarf','🧣','ሻርፕ','Scarf'],['glasses','👓','መነጽር','Glasses'],['bag','👜','ቦርሳ','Bag'],['belt','🥋','ቀበቶ','Belt'],['umbrella','☂️','ጃንጥላ','Umbrella'],['gloves','🧤','ጓንት','Gloves'],['ring','💍','ቀለበት','Ring'],['necklace','📿','ሐብል','Necklace'],['watch','⌚','የእጅ ሰዓት','Watch'],['earrings','💎','ጉትቻ','Earrings'],['tie','👔','ክራቫት','Tie'],['boots','🥾','ቡት ጫማ','Boots'],['sweater','🧶','ሹራብ','Sweater']],
+Home:[['sofa','🛋️','ሶፋ','Sofa'],['chair','🪑','ወንበር','Chair'],['bed','🛏️','አልጋ','Bed'],['lamp','💡','መብራት','Lamp'],['tv','📺','ቴሌቪዥን','Television'],['door','🚪','በር','Door'],['window','🪟','መስኮት','Window'],['table','🪵','ጠረጴዛ','Table'],['clock','🕰️','ሰዓት','Clock'],['key','🔑','ቁልፍ','Key'],['book','📘','መጽሐፍ','Book'],['house','🏠','ቤት','House'],['mirror','🪞','መስተዋት','Mirror'],['pillow','🛌','ትራስ','Pillow'],['blanket','🧣','ብርድ ልብስ','Blanket'],['curtain','🪟','መጋረጃ','Curtain'],['shelf','📚','መደርደሪያ','Shelf'],['carpet','🟫','ምንጣፍ','Carpet'],['roof','🏚️','ጣሪያ','Roof'],['wall','🧱','ግድግዳ','Wall']],
+Kitchen:[['fridge','🧊','ማቀዝቀዣ','Refrigerator'],['stove','♨️','ምድጃ','Stove'],['spoon','🥄','ማንኪያ','Spoon'],['fork','🍴','ሹካ','Fork'],['knife','🔪','ቢላዋ','Knife'],['plate','🍽️','ሳህን','Plate'],['cup','🥤','ኩባያ','Cup'],['pot','🍲','ድስት','Pot'],['bowl','🥣','ጎድጓዳ ሳህን','Bowl'],['bottle','🍼','ጠርሙስ','Bottle'],['sink','🚰','ማጠቢያ','Sink'],['kettle','🫖','ቡና ማፍያ','Kettle'],['broom','🧹','ጠራጊ','Broom'],['bucket','🪣','ባልዲ','Bucket'],['soap','🧼','ሳሙና','Soap'],['towel','🧻','ፎጣ','Towel'],['basket','🧺','ቅርጫት','Basket'],['tray','🍱','ትሪ','Tray'],['candle','🕯️','ሻማ','Candle'],['matches','🔥','ክብሪት','Matches']],
+School:[['pencil','✏️','እርሳስ','Pencil'],['pen','🖊️','ብዕር','Pen'],['notebook','📓','ደብተር','Notebook'],['book2','📚','መጽሐፍ','Book'],['school','🏫','ትምህርት ቤት','School'],['desk','🧑‍💻','ዴስክ','Desk'],['computer','💻','ኮምፒውተር','Computer'],['paper','📄','ወረቀት','Paper'],['backpack','🎒','ቦርሳ','Backpack'],['ruler','📏','መስመሪያ','Ruler'],['scissors','✂️','መቀስ','Scissors'],['calculator','🧮','ማስሊያ','Calculator'],['chalk','🖍️','ጠመኔ','Chalk'],['board','📋','ሰሌዳ','Board'],['map','🗺️','ካርታ','Map'],['globe','🌐','ግሎብ','Globe'],['eraser','🧽','ላስቲክ','Eraser'],['glue','🧴','ማጣበቂያ','Glue'],['exam','📝','ፈተና','Exam'],['library','📖','ቤተ መጻሕፍት','Library']],
+Nature:[['sun','☀️','ፀሐይ','Sun'],['moon','🌙','ጨረቃ','Moon'],['star','⭐','ኮከብ','Star'],['tree','🌳','ዛፍ','Tree'],['flower','🌼','አበባ','Flower'],['rain','🌧️','ዝናብ','Rain'],['mountain','⛰️','ተራራ','Mountain'],['river','🏞️','ወንዝ','River'],['cloud','☁️','ደመና','Cloud'],['fire','🔥','እሳት','Fire'],['earth','🌍','ምድር','Earth'],['wind','💨','ነፋስ','Wind'],['sea','🌊','ባሕር','Sea'],['lake','🏞️','ሐይቅ','Lake'],['forest','🌲','ጫካ','Forest'],['sky','🌌','ሰማይ','Sky'],['snow','❄️','በረዶ','Snow'],['rock','🪨','ድንጋይ','Rock'],['sand','🏖️','አሸዋ','Sand'],['lightning','⚡','መብረቅ','Lightning']],
+Transport:[['car','🚗','መኪና','Car'],['bus','🚌','አውቶቡስ','Bus'],['bike','🚲','ብስክሌት','Bicycle'],['plane','✈️','አውሮፕላን','Airplane'],['train','🚆','ባቡር','Train'],['boat','⛵','ጀልባ','Boat'],['taxi','🚕','ታክሲ','Taxi'],['road','🛣️','መንገድ','Road'],['traffic','🚦','የትራፊክ መብራት','Traffic light'],['station','🚉','ጣቢያ','Station'],['motorcycle','🏍️','ሞተር ሳይክል','Motorcycle'],['truck','🚚','የጭነት መኪና','Truck'],['helicopter','🚁','ሄሊኮፕተር','Helicopter'],['ship','🚢','መርከብ','Ship'],['bridge','🌉','ድልድይ','Bridge'],['ticket','🎫','ትኬት','Ticket'],['airport','🛫','አውሮፕላን ማረፊያ','Airport'],['driver','🧑‍✈️','ሹፌር','Driver'],['wheel','🛞','ጎማ','Wheel'],['fuel','⛽','ነዳጅ','Fuel']],
+Colors:[['red','🟥','ቀይ','Red'],['green','🟩','አረንጓዴ','Green'],['yellow','🟨','ቢጫ','Yellow'],['blue','🟦','ሰማያዊ','Blue'],['black','⬛','ጥቁር','Black'],['white','⬜','ነጭ','White'],['orange2','🟧','ብርቱካናማ','Orange'],['purple','🟪','ሐምራዊ','Purple'],['brown','🟫','ቡናማ','Brown'],['pink','🌸','ሮዝ','Pink'],['gray','◻️','ግራጫ','Gray'],['rainbow','🌈','ቀስተ ደመና','Rainbow'],['gold','🟡','ወርቃማ','Gold'],['silver','⚪','ብርማ','Silver'],['navy','🔵','ጥቁር ሰማያዊ','Navy blue'],['turquoise','🔷','ላይ ሰማያዊ','Turquoise']],
+Daily:[['eat','🍽️','መብላት','Eat'],['drink','🥤','መጠጣት','Drink'],['sleep','😴','መተኛት','Sleep'],['read','📖','ማንበብ','Read'],['write','✍️','መጻፍ','Write'],['walk','🚶','መሄድ','Walk'],['run','🏃','መሮጥ','Run'],['sit','🪑','መቀመጥ','Sit'],['stand','🧍','መቆም','Stand'],['wash','🧼','መታጠብ','Wash'],['cook','👩‍🍳','ማብሰል','Cook'],['play','⚽','መጫወት','Play'],['jump','🤸','መዝለል','Jump'],['sing','🎤','መዘመር','Sing'],['dance','💃','መደነስ','Dance'],['laugh','😂','መሳቅ','Laugh'],['cry','😢','ማልቀስ','Cry'],['love','❤️','መውደድ','Love'],['study','🎓','ማጥናት','Study'],['help','🤝','መርዳት','Help']],
+Numbers:[['one','1️⃣','አንድ','One'],['two','2️⃣','ሁለት','Two'],['three','3️⃣','ሶስት','Three'],['four','4️⃣','አራት','Four'],['five','5️⃣','አምስት','Five'],['six','6️⃣','ስድስት','Six'],['seven','7️⃣','ሰባት','Seven'],['eight','8️⃣','ስምንት','Eight'],['nine','9️⃣','ዘጠኝ','Nine'],['ten','🔟','አስር','Ten'],['eleven','🔢','አስራ አንድ','Eleven'],['twelve','🔢','አስራ ሁለት','Twelve']]
+};
+V.All=(function(){const seen=new Set(),out=[];Object.keys(V).forEach(cat=>{V[cat].forEach(item=>{if(!seen.has(item[0])){seen.add(item[0]);out.push(item)}})});return out})();
+
+const COURSE=[['Starter','Fidel & Sounds','Recognize Fidel families and their seven forms.'],['Starter','First Words','Common objects, people and actions.'],['Beginner','Greetings','Hello, names, polite expressions and simple replies.'],['Beginner','Family & People','Talk about family, age and relationships.'],['Beginner','Body & Clothing','Body parts, clothing and action commands.'],['Elementary','Food & Home','Meals, rooms, furniture and kitchen objects.'],['Elementary','Numbers, Time & School','Counting, days, time and school vocabulary.'],['Intermediate','Everyday Conversation','Shopping, directions, transportation and social situations.'],['Intermediate','Reading & Writing','Short passages, sentence building and dictation.'],['Advanced','Grammar & Expression','Verb patterns, agreement, richer vocabulary and composition.']];
+const FIDEL=[['ሀ','ሁ','ሂ','ሃ','ሄ','ህ','ሆ'],['ለ','ሉ','ሊ','ላ','ሌ','ል','ሎ'],['ሐ','ሑ','ሒ','ሓ','ሔ','ሕ','ሖ'],['መ','ሙ','ሚ','ማ','ሜ','ም','ሞ'],['ሠ','ሡ','ሢ','ሣ','ሤ','ሥ','ሦ'],['ረ','ሩ','ሪ','ራ','ሬ','ር','ሮ'],['ሰ','ሱ','ሲ','ሳ','ሴ','ስ','ሶ'],['ሸ','ሹ','ሺ','ሻ','ሼ','ሽ','ሾ'],['ቀ','ቁ','ቂ','ቃ','ቄ','ቅ','ቆ'],['በ','ቡ','ቢ','ባ','ቤ','ብ','ቦ'],['ቨ','ቩ','ቪ','ቫ','ቬ','ቭ','ቮ'],['ተ','ቱ','ቲ','ታ','ቴ','ት','ቶ'],['ቸ','ቹ','ቺ','ቻ','ቼ','ች','ቾ'],['ኀ','ኁ','ኂ','ኃ','ኄ','ኅ','ኆ'],['ነ','ኑ','ኒ','ና','ኔ','ን','ኖ'],['ኘ','ኙ','ኚ','ኛ','ኜ','ኝ','ኞ'],['አ','ኡ','ኢ','ኣ','ኤ','እ','ኦ'],['ከ','ኩ','ኪ','ካ','ኬ','ክ','ኮ'],['ኸ','ኹ','ኺ','ኻ','ኼ','ኽ','ኾ'],['ወ','ዉ','ዊ','ዋ','ዌ','ው','ዎ'],['ዐ','ዑ','ዒ','ዓ','ዔ','ዕ','ዖ'],['ዘ','ዙ','ዚ','ዛ','ዜ','ዝ','ዞ'],['ዠ','ዡ','ዢ','ዣ','ዤ','ዥ','ዦ'],['የ','ዩ','ዪ','ያ','ዬ','ይ','ዮ'],['ደ','ዱ','ዲ','ዳ','ዴ','ድ','ዶ'],['ጀ','ጁ','ጂ','ጃ','ጄ','ጅ','ጆ'],['ገ','ጉ','ጊ','ጋ','ጌ','ግ','ጎ'],['ጠ','ጡ','ጢ','ጣ','ጤ','ጥ','ጦ'],['ጨ','ጩ','ጪ','ጫ','ጬ','ጭ','ጮ'],['ጰ','ጱ','ጲ','ጳ','ጴ','ጵ','ጶ'],['ጸ','ጹ','ጺ','ጻ','ጼ','ጽ','ጾ'],['ፀ','ፁ','ፂ','ፃ','ፄ','ፅ','ፆ'],['ፈ','ፉ','ፊ','ፋ','ፌ','ፍ','ፎ'],['ፐ','ፑ','ፒ','ፓ','ፔ','ፕ','ፖ']];
+const CONV={Greetings:[['👋','ሰላም!','Hello!'],['🙂','እንዴት ነህ? / ነሽ?','How are you?'],['🙂','ደህና ነኝ።','I am fine.'],['🙏','አመሰግናለሁ።','Thank you.'],['👋','ደህና ሁን / ሁኚ።','Goodbye.']],Home:[['🏠','ይህ ቤቴ ነው።','This is my house.'],['🪑','ወንበሩ የት ነው?','Where is the chair?'],['🚪','በሩን ዝጋ።','Close the door.'],['💡','መብራቱን አብራ።','Turn on the light.']],Food:[['🍽️','ምን መብላት ትፈልጋለህ?','What would you like to eat?'],['💧','ውሃ እፈልጋለሁ።','I would like water.'],['☕','ቡና ትፈልጋለህ?','Would you like coffee?'],['🙏','አዎ፣ አመሰግናለሁ።','Yes, thank you.']],Shopping:[['🛒','ይህ ስንት ነው?','How much is this?'],['💵','ውድ ነው።','It is expensive.'],['🤲','ይህን እፈልጋለሁ።','I would like this.'],['🙏','አመሰግናለሁ።','Thank you.']],Travel:[['🚕','ታክሲ የት ነው?','Where is the taxi?'],['🛣️','ይህ መንገድ ወዴት ይሄዳል?','Where does this road go?'],['🚌','አውቶቡሱ መቼ ይመጣል?','When does the bus come?'],['📍','እዚህ አቁም፣ እባክህ።','Stop here, please.']]};
+
+let P=JSON.parse(localStorage.getItem('amhProgress')||'{"xp":0,"rounds":0,"mastered":0,"streak":1,"badges":{}}');
+P.badges=P.badges||{};
+let gameState={type:'match',category:'Animals',score:0,round:1,pools:{},selectedTile:null,current:[],correct:0,wrong:0};
+function save(){localStorage.setItem('amhProgress',JSON.stringify(P));renderProgress()}
+function addXP(n){P.xp+=n;save()}
+function renderProgress(){
+  const level=Math.floor(P.xp/100)+1;
+  document.getElementById('xpText').textContent=P.xp+' XP • Level '+level;
+  document.getElementById('xpBar').style.width=Math.min(100,P.xp%100)+'%';
+  document.getElementById('progressText').innerHTML=`${P.rounds} rounds completed • ${P.mastered} matches mastered • ${P.streak} day streak <span class="flame">🔥</span>`;
+  document.getElementById('score').textContent=gameState.score;
+}
+function shuffle(a){let r=[...a];for(let i=r.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[r[i],r[j]]=[r[j],r[i]]}return r}
+function openPanel(id){document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');if(id==='review')renderReview();if(id==='tracing')setTimeout(setupTraceCanvas,60);document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'})}
+function closePanels(){document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'))}
+function speak(t){if('speechSynthesis'in window){let u=new SpeechSynthesisUtterance(t);u.lang='am-ET';speechSynthesis.cancel();speechSynthesis.speak(u)}}
+
+// ===== sound effects (Web Audio API — no external files, works fully offline) =====
+let actx=null;
+function ensureAudio(){if(!actx){try{actx=new (window.AudioContext||window.webkitAudioContext)()}catch(e){actx=null}}return actx}
+function beep(freq,dur,type,startDelay,vol){const ctx=ensureAudio();if(!ctx)return;const t0=ctx.currentTime+(startDelay||0);const osc=ctx.createOscillator();const gain=ctx.createGain();osc.type=type||'sine';osc.frequency.setValueAtTime(freq,t0);gain.gain.setValueAtTime(0,t0);gain.gain.linearRampToValueAtTime(vol||0.18,t0+0.01);gain.gain.exponentialRampToValueAtTime(0.0001,t0+dur);osc.connect(gain);gain.connect(ctx.destination);osc.start(t0);osc.stop(t0+dur+0.03)}
+function playCorrectSound(){beep(523.25,0.12,'sine',0,0.16);beep(783.99,0.18,'sine',0.11,0.16)}
+function playIncorrectSound(){beep(220,0.16,'sawtooth',0,0.13);beep(174,0.22,'sawtooth',0.06,0.11)}
+
+// ===== badges (standard accuracy-based metrics, like most language apps) =====
+function tierRank(t){return {bronze:1,silver:2,gold:3,platinum:4}[t]||0}
+function computeTier(correct,total,mistakes){if(total<3)return null;const pct=(correct/total)*100;if(pct>=100&&mistakes===0)return 'platinum';if(pct>=90)return 'gold';if(pct>=75)return 'silver';if(pct>=50)return 'bronze';return null}
+function awardBadge(key,tier,label){if(!tier)return;const prev=P.badges[key];if(!prev||tierRank(tier)>tierRank(prev)){P.badges[key]=tier;save();showBadgeToast(tier,label)}}
+function showBadgeToast(tier,label){
+  const icon={bronze:'🥉',silver:'🥈',gold:'🥇',platinum:'💎'}[tier];
+  const name={bronze:'Bronze',silver:'Silver',gold:'Gold',platinum:'Platinum'}[tier];
+  const t=document.createElement('div');
+  t.className='toast';
+  t.innerHTML=`<span class="toast-icon">${icon}</span><span>${name} badge — ${label}</span>`;
+  document.body.appendChild(t);
+  requestAnimationFrame(()=>t.classList.add('show'));
+  spawnConfetti();
+  setTimeout(()=>{t.classList.remove('show');setTimeout(()=>t.remove(),400)},2600);
+}
+function spawnConfetti(){
+  const colors=['#267a53','#b7791f','#2457c5','#b42318','#75c69a'];
+  for(let i=0;i<24;i++){
+    const p=document.createElement('div');
+    p.className='confetti-piece';
+    p.style.left=(Math.random()*100)+'vw';
+    p.style.background=colors[Math.floor(Math.random()*colors.length)];
+    p.style.animationDuration=(1.5+Math.random()*1.2)+'s';
+    document.body.appendChild(p);
+    setTimeout(()=>p.remove(),3000);
+  }
+}
+function sectionMeta(){
+  const labels={match:'Drag Picture Match',listen:'Listen & Choose',missing:'Missing Letter',builder:'Word Builder',choice:'Multiple Choice',fidelquiz:'Fidel Quiz'};
+  const t=gameState.type;
+  if(t==='fidelquiz')return {key:'fidelquiz',label:'Fidel Quiz'};
+  return {key:t+'::'+gameCategory.value,label:labels[t]+' — '+gameCategory.value};
+}
+function renderBadges(){
+  const entries=Object.entries(P.badges);
+  const counts={bronze:0,silver:0,gold:0,platinum:0};
+  entries.forEach(([k,t])=>{if(counts[t]!==undefined)counts[t]++});
+  const summary=`<div class="badge-summary">
+    <div class="badge-count">💎 <strong>${counts.platinum}</strong><span>Platinum</span></div>
+    <div class="badge-count">🥇 <strong>${counts.gold}</strong><span>Gold</span></div>
+    <div class="badge-count">🥈 <strong>${counts.silver}</strong><span>Silver</span></div>
+    <div class="badge-count">🥉 <strong>${counts.bronze}</strong><span>Bronze</span></div>
+  </div>`;
+  const grid=entries.length?`<div class="badge-grid">${entries.map(([k,t])=>{
+    const icon={bronze:'🥉',silver:'🥈',gold:'🥇',platinum:'💎'}[t];
+    const label=k.replace('::',' — ');
+    return `<div class="badge-chip badge-${t}"><span class="badge-icon">${icon}</span><span class="badge-label">${label}</span></div>`;
+  }).join('')}</div>`:`<p class="muted">Finish a round with at least 50% correct to start earning badges.</p>`;
+  document.getElementById('badgeShelf').innerHTML=summary+grid;
+}
+
+// course
+document.getElementById('coursePath').innerHTML=COURSE.map((x,i)=>`<div class="unit"><span class="badge">${x[0].toUpperCase()}</span><h4>${i+1}. ${x[1]}</h4><p class="muted">${x[2]}</p></div>`).join('');
+document.getElementById('lessonList').innerHTML=COURSE.map((x,i)=>`<div class="lesson"><div class="lesson-num">${i+1}</div><div><strong>${x[1]}</strong><div class="muted">${x[2]}</div></div><button class="secondary" onclick="lessonStart('${x[1]}')">Start</button></div>`).join('');
+function lessonStart(name){addXP(2);openPanel(name==='Fidel & Sounds'?'fidel':name.includes('Conversation')?'conversation':'vocab')}
+
+// vocab
+Object.keys(V).forEach((cat,i)=>{let b=document.createElement('button');b.className='tab'+(i===0?' active':'');b.textContent=cat==='All'?'All Categories':cat;b.dataset.cat=cat;b.onclick=()=>renderVocab(cat);document.getElementById('vocabTabs').appendChild(b)});
+function renderVocab(cat){document.querySelectorAll('#vocabTabs .tab').forEach(t=>t.classList.toggle('active',t.dataset.cat===cat));document.getElementById('vocabGrid').innerHTML=V[cat].map(x=>`<div class="vocab"><div class="pic">${x[1]}</div><div class="amh">${x[2]}</div><div class="eng">${x[3]}</div><button class="secondary" onclick="speak('${x[2].replaceAll("'","\\'")}')">🔊 Listen</button></div>`).join('')}
+renderVocab('Animals');
+
+// unique non-repeating pools
+function poolKey(type,cat){return type+'::'+cat}
+function takeUnique(type,cat,n){const key=poolKey(type,cat);if(!gameState.pools[key]||gameState.pools[key].length===0){gameState.pools[key]=shuffle(V[cat].map(x=>x[0]))}const pool=gameState.pools[key];const count=Math.min(n,pool.length);const ids=pool.splice(0,count);const items=ids.map(id=>V[cat].find(x=>x[0]===id));return {items,remaining:pool.length,recycled:pool.length===0}}
+function completeRound(){
+  const meta=sectionMeta();
+  const total=gameState.correct+gameState.wrong;
+  const tier=computeTier(gameState.correct,total,gameState.wrong);
+  P.rounds++;addXP(10);gameState.round++;
+  document.getElementById('roundCount').textContent='Round '+gameState.round;
+  if(tier)awardBadge(meta.key,tier,meta.label);
+  gameState.correct=0;gameState.wrong=0;
+}
+
+// fidel quiz pool (34 families x 7 letters x 3 question formats = 700+ prompts)
+const FIDELQ=FIDEL.flatMap((fam,fi)=>fam.map((ch,li)=>({id:fi+'-'+li,fam:fi,li,ch})));
+function takeUniqueFidel(n){const key='fidelquiz';if(!gameState.pools[key]||gameState.pools[key].length===0){gameState.pools[key]=shuffle(FIDELQ.map(x=>x.id))}const pool=gameState.pools[key];const count=Math.min(n,pool.length);const ids=pool.splice(0,count);const items=ids.map(id=>FIDELQ.find(x=>x.id===id));return {items,remaining:pool.length}}
+
+// game picker
+const GAMES=[['match','🖼️ Drag Picture Match'],['listen','🔊 Listen & Choose'],['missing','🔤 Missing Letter'],['builder','🧩 Word Builder'],['choice','🎯 Multiple Choice'],['fidelquiz','🔡 Fidel Quiz']];
+document.getElementById('gamePicker').innerHTML=GAMES.map((g,i)=>`<button class="game-choice${i===0?' active':''}" data-game="${g[0]}" onclick="selectGame('${g[0]}',this)">${g[1]}</button>`).join('');
+Object.keys(V).forEach(c=>document.getElementById('gameCategory').insertAdjacentHTML('beforeend',`<option${c==='All'?' value="All"':''}>${c==='All'?'All Categories (Mixed)':c}</option>`));
+document.getElementById('gameCategory').onchange=()=>{gameState.category=document.getElementById('gameCategory').value;startCurrentGame()};
+document.getElementById('roundSize').onchange=startCurrentGame;
+function selectGame(t,el){gameState.type=t;document.querySelectorAll('.game-choice').forEach(b=>b.classList.remove('active'));el.classList.add('active');const catEl=document.getElementById('gameCategory');catEl.disabled=(t==='fidelquiz');catEl.style.opacity=(t==='fidelquiz')?0.45:1;startCurrentGame()}
+function startCurrentGame(){
+  gameState.correct=0;gameState.wrong=0;
+  const n=+document.getElementById('roundSize').value;
+  if(gameState.type==='fidelquiz'){
+    const pack=takeUniqueFidel(n);
+    gameState.current=pack.items;
+    const note=`Using ${pack.items.length} new letter${pack.items.length>1?'s':''} from all 34 Fidel families. ${pack.remaining} unused remain before this set cycles.`;
+    renderFidelQuiz(pack.items,note);
+    return;
+  }
+  const cat=document.getElementById('gameCategory').value;
+  const pack=takeUnique(gameState.type,cat,n);
+  gameState.current=pack.items;gameState.selectedTile=null;
+  const note=`Using ${pack.items.length} new item${pack.items.length>1?'s':''}. ${pack.remaining} unused item${pack.remaining===1?'':'s'} remain before this category cycles.`;
+  if(gameState.type==='match')renderMatch(pack.items,note);
+  if(gameState.type==='listen')renderListen(pack.items,note);
+  if(gameState.type==='missing')renderMissing(pack.items,note);
+  if(gameState.type==='builder')renderBuilder(pack.items,note);
+  if(gameState.type==='choice')renderChoice(pack.items,note);
+}
+
+function renderMatch(items,note){
+  const gameStage=document.getElementById('gameStage');
+  gameStage.innerHTML=`<div class="game-toolbar"><strong>Drag each Amharic word onto its matching picture.</strong><span class="round-note">${note}</span></div><div class="match-board"><div class="image-slots" id="imageSlots"></div><div class="word-bank" id="wordBank"></div></div><div class="feedback" id="feedback">On phones, you can also tap a word and then tap the picture.</div>`;
+  document.getElementById('imageSlots').innerHTML=shuffle(items).map(x=>`<div class="image-slot" data-id="${x[0]}" onclick="tapSlot(this)" ondragover="event.preventDefault();this.classList.add('dragover')" ondragleave="this.classList.remove('dragover')" ondrop="dropWord(event,this)"><span class="slot-pic">${x[1]}</span><span class="label">${x[3]}</span></div>`).join('');
+  document.getElementById('wordBank').innerHTML=shuffle(items).map(x=>`<div class="word-tile" draggable="true" data-id="${x[0]}" id="tile-${x[0]}" ondragstart="dragWord(event)" onclick="selectWordTile(this)">${x[2]}</div>`).join('');
+}
+function dragWord(e){gameState.selectedTile=e.currentTarget;e.dataTransfer.setData('text/plain',e.currentTarget.dataset.id)}
+function selectWordTile(el){document.querySelectorAll('.word-tile').forEach(x=>x.classList.remove('selected'));gameState.selectedTile=el;el.classList.add('selected')}
+function tapSlot(slot){if(gameState.selectedTile)tryMatch(gameState.selectedTile,slot)}
+function dropWord(e,slot){e.preventDefault();slot.classList.remove('dragover');let id=e.dataTransfer.getData('text/plain');let tile=document.getElementById('tile-'+id);if(tile)tryMatch(tile,slot)}
+function tryMatch(tile,slot){
+  const fb=document.getElementById('feedback');
+  if(tile.dataset.id===slot.dataset.id){
+    slot.classList.add('correct');tile.classList.add('used');slot.insertAdjacentHTML('beforeend',`<span class="amh">${tile.textContent}</span>`);
+    gameState.score+=10;gameState.correct++;P.mastered++;addXP(2);playCorrectSound();
+    fb.className='feedback ok';fb.textContent='Correct! ✓';tile.draggable=false;gameState.selectedTile=null;
+    document.getElementById('score').textContent=gameState.score;
+    if([...document.querySelectorAll('.word-tile')].every(x=>x.classList.contains('used'))){completeRound();fb.textContent='Round complete! Every item in this round was matched. Choose New Round for fresh items.'}
+  } else {
+    gameState.wrong++;playIncorrectSound();
+    fb.className='feedback bad';fb.textContent='Try again — that word belongs to another picture.';
+  }
+}
+
+let seqIndex=0;
+function updateRoundProgress(total){const el=document.getElementById('roundProgress');if(el)el.textContent=`Question ${seqIndex+1} of ${total}`}
+
+function renderListen(items,note){seqIndex=0;const gameStage=document.getElementById('gameStage');gameStage.innerHTML=`<div class="game-toolbar"><strong>Listen and choose the matching answer.</strong><span class="round-note">${note}</span></div><div class="round-note" id="roundProgress"></div><div id="sequenceArea"></div>`;nextListen(items)}
+function nextListen(items){
+  const sequenceArea=document.getElementById('sequenceArea');
+  if(seqIndex>=items.length){completeRound();sequenceArea.innerHTML='<div class="feedback ok">Round complete! Start a new round for unused items.</div>';return}
+  updateRoundProgress(items.length);
+  const cat=document.getElementById('gameCategory').value;
+  const x=items[seqIndex];
+  const formats=['audio2pic','audio2word','audio2eng'];
+  const fmt=formats[Math.floor(Math.random()*formats.length)];
+  const distractPool=V[cat].filter(y=>y[0]!==x[0]);
+  const d=shuffle([x,...shuffle(distractPool).slice(0,3)]);
+  let optsHtml='';
+  if(fmt==='audio2pic')optsHtml=d.map(y=>`<button class="quiz-option" onclick="answerListen(this,'${y[0]}','${x[0]}')"><span class="pic">${y[1]}</span><br>${y[3]}</button>`).join('');
+  else if(fmt==='audio2word')optsHtml=d.map(y=>`<button class="quiz-option" onclick="answerListen(this,'${y[0]}','${x[0]}')" style="font-size:1.3rem">${y[2]}</button>`).join('');
+  else optsHtml=d.map(y=>`<button class="quiz-option" onclick="answerListen(this,'${y[0]}','${x[0]}')">${y[3]}</button>`).join('');
+  sequenceArea.innerHTML=`<div class="prompt-card"><button class="primary" onclick="speak('${x[2]}')">🔊 Hear Word</button><div class="quiz-grid" style="margin-top:14px">${optsHtml}</div></div>`;
+  setTimeout(()=>speak(x[2]),250);
+}
+function answerListen(el,id,correct){
+  if(id===correct){el.classList.add('correct');gameState.score+=10;gameState.correct++;addXP(2);playCorrectSound();seqIndex++;setTimeout(()=>nextListen(gameState.current),350)}
+  else{el.classList.add('wrong');gameState.wrong++;playIncorrectSound()}
+  renderProgress();
+}
+
+function renderMissing(items,note){seqIndex=0;const gameStage=document.getElementById('gameStage');gameStage.innerHTML=`<div class="game-toolbar"><strong>Complete the missing Fidel character.</strong><span class="round-note">${note}</span></div><div class="round-note" id="roundProgress"></div><div id="sequenceArea"></div>`;nextMissing(items)}
+function nextMissing(items){
+  const sequenceArea=document.getElementById('sequenceArea');
+  if(seqIndex>=items.length){completeRound();sequenceArea.innerHTML='<div class="feedback ok">Round complete!</div>';return}
+  updateRoundProgress(items.length);
+  let x=items[seqIndex],chars=[...x[2]],idx=Math.floor(Math.random()*chars.length),ans=chars[idx];chars[idx]='＿';
+  let opts=shuffle([ans,...shuffle(['ሀ','ለ','ሙ','ት','ን','ር','ግ','ብ','ው','አ']).filter(c=>c!==ans).slice(0,3)]);
+  sequenceArea.innerHTML=`<div class="prompt-card"><div class="pic">${x[1]}</div><div class="prompt-big">${chars.join('')}</div><p>${x[3]}</p><div class="quiz-grid">${opts.map(o=>`<button class="quiz-option" onclick="answerSimple(this,'${o}','${ans}','missing')">${o}</button>`).join('')}</div></div>`;
+}
+function renderBuilder(items,note){seqIndex=0;const gameStage=document.getElementById('gameStage');gameStage.innerHTML=`<div class="game-toolbar"><strong>Build the Amharic word in the correct order.</strong><span class="round-note">${note}</span></div><div class="round-note" id="roundProgress"></div><div id="sequenceArea"></div>`;nextBuilder(items)}
+let buildAnswer=[];
+function nextBuilder(items){
+  const sequenceArea=document.getElementById('sequenceArea');
+  if(seqIndex>=items.length){completeRound();sequenceArea.innerHTML='<div class="feedback ok">Round complete!</div>';return}
+  updateRoundProgress(items.length);
+  let x=items[seqIndex];buildAnswer=[];let chars=shuffle([...x[2]]);
+  sequenceArea.innerHTML=`<div class="prompt-card"><div class="pic">${x[1]}</div><p><strong>${x[3]}</strong></p><div class="answer-line" id="answerLine"></div><div class="builder-bank">${chars.map((c,i)=>`<button class="letter-chip" id="chip${i}" onclick="addBuild('${c}',this)">${c}</button>`).join('')}</div><div class="inline" style="justify-content:center;margin-top:12px"><button class="secondary" onclick="nextBuilder(gameState.current)">Reset</button><button class="primary" onclick="checkBuild('${x[2]}')">Check</button></div><div class="feedback" id="feedback"></div></div>`;
+}
+function addBuild(c,el){buildAnswer.push(c);document.getElementById('answerLine').textContent=buildAnswer.join('');el.disabled=true}
+function checkBuild(correct){
+  const feedback=document.getElementById('feedback');
+  if(buildAnswer.join('')===correct){feedback.className='feedback ok';feedback.textContent='Correct!';gameState.score+=10;gameState.correct++;addXP(2);playCorrectSound();seqIndex++;setTimeout(()=>nextBuilder(gameState.current),400)}
+  else{feedback.className='feedback bad';feedback.textContent='Not quite. Reset and try again.';gameState.wrong++;playIncorrectSound()}
+  renderProgress();
+}
+function renderChoice(items,note){seqIndex=0;const gameStage=document.getElementById('gameStage');gameStage.innerHTML=`<div class="game-toolbar"><strong>Choose the correct answer.</strong><span class="round-note">${note}</span></div><div class="round-note" id="roundProgress"></div><div id="sequenceArea"></div>`;nextChoice(items)}
+function nextChoice(items){
+  const sequenceArea=document.getElementById('sequenceArea');
+  if(seqIndex>=items.length){completeRound();sequenceArea.innerHTML='<div class="feedback ok">Round complete!</div>';return}
+  updateRoundProgress(items.length);
+  const cat=document.getElementById('gameCategory').value;
+  const x=items[seqIndex];
+  const formats=['pic2word','word2pic','eng2word'];
+  const fmt=formats[Math.floor(Math.random()*formats.length)];
+  const opts=shuffle([x,...shuffle(V[cat].filter(y=>y[0]!==x[0])).slice(0,3)]);
+  let promptHtml='',optsHtml='';
+  if(fmt==='pic2word'){promptHtml=`<div class="pic">${x[1]}</div><h3>${x[3]}</h3>`;optsHtml=opts.map(o=>`<button class="quiz-option" onclick="answerSimple(this,'${o[0]}','${x[0]}','choice')">${o[2]}</button>`).join('');}
+  else if(fmt==='word2pic'){promptHtml=`<div class="prompt-big">${x[2]}</div><p class="muted">Which picture matches this word?</p>`;optsHtml=opts.map(o=>`<button class="quiz-option" onclick="answerSimple(this,'${o[0]}','${x[0]}','choice')"><span class="pic">${o[1]}</span><br>${o[3]}</button>`).join('');}
+  else{promptHtml=`<h3>${x[3]}</h3><p class="muted">Choose the correct Amharic word.</p>`;optsHtml=opts.map(o=>`<button class="quiz-option" onclick="answerSimple(this,'${o[0]}','${x[0]}','choice')" style="font-size:1.3rem">${o[2]}</button>`).join('');}
+  sequenceArea.innerHTML=`<div class="prompt-card">${promptHtml}<div class="quiz-grid">${optsHtml}</div></div>`;
+}
+function answerSimple(el,id,correct,type){
+  if(id===correct){el.classList.add('correct');gameState.score+=10;gameState.correct++;addXP(2);playCorrectSound();seqIndex++;setTimeout(()=>type==='missing'?nextMissing(gameState.current):nextChoice(gameState.current),350)}
+  else{el.classList.add('wrong');gameState.wrong++;playIncorrectSound()}
+  renderProgress();
+}
+
+function renderFidelQuiz(items,note){seqIndex=0;const gameStage=document.getElementById('gameStage');gameStage.innerHTML=`<div class="game-toolbar"><strong>Fidel Quiz — sounds, families and missing letters.</strong><span class="round-note">${note}</span></div><div class="round-note" id="roundProgress"></div><div id="sequenceArea"></div>`;nextFidelQuiz(items)}
+function nextFidelQuiz(items){
+  const sequenceArea=document.getElementById('sequenceArea');
+  if(seqIndex>=items.length){completeRound();sequenceArea.innerHTML='<div class="feedback ok">Round complete!</div>';return}
+  updateRoundProgress(items.length);
+  const x=items[seqIndex];
+  const fam=FIDEL[x.fam];
+  const formats=['sound2letter','letter2family','positionfill'];
+  const fmt=formats[Math.floor(Math.random()*formats.length)];
+  if(fmt==='sound2letter'){
+    const distract=shuffle(FIDEL.flat().filter(c=>c!==x.ch)).slice(0,3);
+    const opts=shuffle([x.ch,...distract]);
+    sequenceArea.innerHTML=`<div class="prompt-card"><button class="primary" onclick="speak('${x.ch}')">🔊 Hear the Letter</button><div class="quiz-grid" style="margin-top:14px">${opts.map(o=>`<button class="quiz-option" onclick="answerFidelQuiz(this,'${o}','${x.ch}')" style="font-size:1.8rem">${o}</button>`).join('')}</div></div>`;
+    setTimeout(()=>speak(x.ch),250);
+  } else if(fmt==='letter2family'){
+    const otherFamIdx=shuffle(FIDEL.map((f,i)=>i).filter(i=>i!==x.fam)).slice(0,3);
+    const opts=shuffle([x.fam,...otherFamIdx]);
+    sequenceArea.innerHTML=`<div class="prompt-card"><div class="prompt-big">${x.ch}</div><p>Which family does this letter belong to?</p><div class="quiz-grid">${opts.map(fi=>`<button class="quiz-option" onclick="answerFidelQuiz(this,${fi},${x.fam})">${FIDEL[fi][0]} family</button>`).join('')}</div></div>`;
+  } else {
+    let chars=[...fam];chars[x.li]='＿';
+    const distract=shuffle(fam.filter((c,i)=>i!==x.li)).slice(0,1);
+    const otherFamChar=shuffle(FIDEL.flat().filter(c=>!fam.includes(c))).slice(0,2);
+    const opts=shuffle([x.ch,...distract,...otherFamChar]);
+    sequenceArea.innerHTML=`<div class="prompt-card"><div class="prompt-big">${chars.join(' ')}</div><p>Which letter completes the ${fam[0]} family?</p><div class="quiz-grid">${opts.map(o=>`<button class="quiz-option" onclick="answerFidelQuiz(this,'${o}','${x.ch}')" style="font-size:1.6rem">${o}</button>`).join('')}</div></div>`;
+  }
+}
+function answerFidelQuiz(el,val,correct){
+  if(String(val)===String(correct)){el.classList.add('correct');gameState.score+=10;gameState.correct++;addXP(2);playCorrectSound();seqIndex++;setTimeout(()=>nextFidelQuiz(gameState.current),350)}
+  else{el.classList.add('wrong');gameState.wrong++;playIncorrectSound()}
+  renderProgress();
+}
+
+// fidel lab
+FIDEL.forEach((f,i)=>document.getElementById('familySelect').insertAdjacentHTML('beforeend',`<option value="${i}">${f[0]} family</option>`));
+document.getElementById('familySelect').onchange=renderFamily;
+function renderFamily(){const f=FIDEL[+document.getElementById('familySelect').value];document.getElementById('fidelRow').innerHTML=f.map((c,i)=>`<button class="fidel-btn" onclick="pickFidel('${c}',${i})">${c}</button>`).join('');pickFidel(f[0],0)}
+function pickFidel(c,i){document.getElementById('bigLetter').textContent=c;document.getElementById('letterHint').textContent=`Order ${i+1} • tap Listen or another character`;speak(c)}
+function playFamily(){let f=FIDEL[+document.getElementById('familySelect').value],i=0;let timer=setInterval(()=>{if(i>=f.length)return clearInterval(timer);document.getElementById('bigLetter').textContent=f[i];speak(f[i]);i++},650)}
+function showAllFamilies(){const allFamilies=document.getElementById('allFamilies');allFamilies.style.display=allFamilies.style.display==='none'?'block':'none';allFamilies.innerHTML=FIDEL.map(f=>`<div class="family-grid">${f.map(c=>`<div class="family-cell">${c}</div>`).join('')}</div>`).join('')}
+renderFamily();
+
+// tracing
+let traceFamilyIndex=0, traceLetterIndex=0, traceCtx=null, traceDrawing=false, traceLast=null;
+FIDEL.forEach((f,i)=>document.getElementById('traceFamilySelect').insertAdjacentHTML('beforeend',`<option value="${i}">${f[0]} family</option>`));
+document.getElementById('traceFamilySelect').onchange=()=>{traceFamilyIndex=+document.getElementById('traceFamilySelect').value;traceLetterIndex=0;renderTraceFamily()};
+function renderTraceFamily(){document.getElementById('traceFamilySelect').value=traceFamilyIndex;const f=FIDEL[traceFamilyIndex];document.getElementById('traceFamilyStrip').innerHTML=f.map((c,i)=>`<button class="trace-letter-btn${i===traceLetterIndex?' active':''}" onclick="selectTraceLetter(${i})">${c}</button>`).join('');updateTraceLetter();}
+function selectTraceLetter(i){traceLetterIndex=i;renderTraceFamily()}
+function updateTraceLetter(){const c=FIDEL[traceFamilyIndex][traceLetterIndex];document.getElementById('traceGuide').textContent=c;document.getElementById('traceCurrentLabel').textContent=c;document.getElementById('traceTitle').textContent='Trace '+c;document.getElementById('traceCompleteMsg').style.display='none';clearTrace()}
+function previousTraceFamily(){traceFamilyIndex=(traceFamilyIndex-1+FIDEL.length)%FIDEL.length;traceLetterIndex=0;renderTraceFamily()}
+function nextTraceFamily(){traceFamilyIndex=(traceFamilyIndex+1)%FIDEL.length;traceLetterIndex=0;renderTraceFamily()}
+function speakTraceLetter(){speak(FIDEL[traceFamilyIndex][traceLetterIndex])}
+function setupTraceCanvas(){const canvas=document.getElementById('traceCanvas'),wrap=document.getElementById('traceCanvasWrap');if(!canvas||!wrap)return;const dpr=window.devicePixelRatio||1;const rect=wrap.getBoundingClientRect();canvas.width=Math.max(1,Math.round(rect.width*dpr));canvas.height=Math.max(1,Math.round(rect.height*dpr));traceCtx=canvas.getContext('2d');traceCtx.setTransform(dpr,0,0,dpr,0,0);traceCtx.lineCap='round';traceCtx.lineJoin='round';traceCtx.lineWidth=Math.max(7,Math.min(13,rect.width/55));traceCtx.strokeStyle='#16784a';clearTrace();}
+function tracePoint(e){const canvas=document.getElementById('traceCanvas');const r=canvas.getBoundingClientRect();return {x:e.clientX-r.left,y:e.clientY-r.top}}
+function traceStart(e){e.preventDefault();traceDrawing=true;traceLast=tracePoint(e);const canvas=document.getElementById('traceCanvas');if(canvas.setPointerCapture)canvas.setPointerCapture(e.pointerId)}
+function traceMove(e){if(!traceDrawing||!traceCtx)return;e.preventDefault();const p=tracePoint(e);traceCtx.beginPath();traceCtx.moveTo(traceLast.x,traceLast.y);traceCtx.lineTo(p.x,p.y);traceCtx.stroke();traceLast=p}
+function traceEnd(e){traceDrawing=false;traceLast=null}
+function clearTrace(){if(!traceCtx)return;const canvas=document.getElementById('traceCanvas');const r=canvas.getBoundingClientRect();traceCtx.clearRect(0,0,r.width,r.height)}
+function markTraceComplete(){document.getElementById('traceCompleteMsg').style.display='block';addXP(3);P.mastered++;renderProgress();
+  const key='tracing::'+FIDEL[traceFamilyIndex][0];
+  const done=(traceLetterIndex>=6);
+  if(done)awardBadge(key,'gold','Tracing — '+FIDEL[traceFamilyIndex][0]+' family');
+  const current=traceLetterIndex;
+  if(current<6){setTimeout(()=>{traceLetterIndex=current+1;renderTraceFamily()},500)}else{setTimeout(()=>nextTraceFamily(),500)}
+}
+document.getElementById('traceCanvas').addEventListener('pointerdown',traceStart);
+document.getElementById('traceCanvas').addEventListener('pointermove',traceMove);
+document.getElementById('traceCanvas').addEventListener('pointerup',traceEnd);
+document.getElementById('traceCanvas').addEventListener('pointercancel',traceEnd);
+document.getElementById('traceCanvas').addEventListener('pointerleave',traceEnd);
+window.addEventListener('resize',()=>{if(document.getElementById('tracing').classList.contains('active'))setupTraceCanvas()});
+renderTraceFamily();
+
+// conversations
+Object.keys(CONV).forEach((c,i)=>{let b=document.createElement('button');b.className='tab'+(i===0?' active':'');b.textContent=c;b.dataset.cat=c;b.onclick=()=>renderConversation(c);document.getElementById('conversationTabs').appendChild(b)});
+function renderConversation(cat){document.querySelectorAll('#conversationTabs .tab').forEach(t=>t.classList.toggle('active',t.dataset.cat===cat));document.getElementById('conversationBody').innerHTML=CONV[cat].map((x,i)=>`<div class="bubble ${i%2?'me':''}"><div>${x[0]} <button class="ghost" onclick="speak('${x[1].replaceAll("'","\\'")}')">🔊</button></div><div class="am">${x[1]}</div><div class="muted">${x[2]}</div></div>`).join('')}
+renderConversation('Greetings');
+
+function renderReview(){
+  document.getElementById('stats').innerHTML=`<div class="stat"><span class="muted">XP</span><strong>${P.xp}</strong></div><div class="stat"><span class="muted">Rounds</span><strong>${P.rounds}</strong></div><div class="stat"><span class="muted">Matches</span><strong>${P.mastered}</strong></div><div class="stat"><span class="muted">Streak</span><strong>${P.streak} 🔥</strong></div>`;
+  let all=V.All;
+  document.getElementById('reviewGrid').innerHTML=shuffle(all).slice(0,10).map(x=>`<div class="vocab"><div class="pic">${x[1]}</div><div class="amh">${x[2]}</div><div class="eng">${x[3]}</div><button class="secondary" onclick="speak('${x[2].replaceAll("'","\\'")}')">🔊</button></div>`).join('');
+  renderBadges();
+}
+let placementScore=0,placementStep=0;
+function placementAnswer(v){
+  placementScore+=v;placementStep++;
+  const qs=[['🐕','Which word means Dog?','ውሻ'],['💬','Can you understand simple greetings and replies?',''],['📖','Can you read a short Amharic sentence without translation?',''],['✍️','Can you write several connected sentences in Amharic?','']];
+  const placementBody=document.getElementById('placementBody');
+  if(placementStep>=qs.length){let level=placementScore<=1?'Starter':placementScore===2?'Beginner':placementScore===3?'Intermediate':'Advanced';placementBody.innerHTML=`<div class="prompt-card"><div class="prompt-big">${level}</div><p>Suggested starting level based on this quick self-check.</p><button class="primary" onclick="document.getElementById('levelSelect').value='${level}';openPanel('learn')">Start ${level}</button></div>`;return}
+  let q=qs[placementStep];
+  placementBody.innerHTML=`<div class="prompt-card"><div class="prompt-big">${q[0]}</div><p>${q[1]}</p><div class="inline" style="justify-content:center"><button class="secondary" onclick="placementAnswer(0)">Not yet</button><button class="primary" onclick="placementAnswer(1)">Yes</button></div></div>`;
+}
+
+document.getElementById('modeSelect').addEventListener('change',e=>{const app=document.getElementById('app');app.classList.remove('mode-kids','mode-teen','mode-adult');app.classList.add('mode-'+e.target.value);localStorage.setItem('amhMode',e.target.value)});
+const savedMode=localStorage.getItem('amhMode');if(savedMode){document.getElementById('modeSelect').value=savedMode;document.getElementById('modeSelect').dispatchEvent(new Event('change'))}
+document.getElementById('resetProgress').onclick=()=>{if(confirm('Reset saved learning progress, badges and unique-question history?')){localStorage.removeItem('amhProgress');P={xp:0,rounds:0,mastered:0,streak:1,badges:{}};gameState.pools={};gameState.score=0;gameState.round=1;renderProgress();startCurrentGame()}};
+renderProgress();startCurrentGame();
+</script>
+</body>
+</html>
