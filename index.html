@@ -39,11 +39,17 @@ h1,h2,h3,h4,p{margin-top:0;font-family:var(--font-display)}
 .brand small{color:var(--muted)}
 .controls{display:flex;gap:8px;flex-wrap:wrap}
 .pill,.secondary,.primary,.ghost{border-radius:12px;padding:10px 13px;border:1px solid var(--line);background:var(--card);color:var(--text)}
-.primary{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:800;box-shadow:var(--btn-shadow)}
+.primary{background:linear-gradient(90deg,var(--accent),var(--accent2));background-size:180% 100%;color:#fff;border-color:var(--accent);font-weight:800;box-shadow:var(--btn-shadow);transition:transform .12s ease,box-shadow .12s ease,background-position .3s ease}
+.primary:hover{background-position:100% 0}
 .primary:hover{transform:translateY(var(--btn-lift))}
 .secondary{font-weight:700}
 .ghost{background:transparent}
-.hero{display:grid;grid-template-columns:1.45fr 1fr;gap:18px;background:linear-gradient(135deg,var(--card),var(--accentsoft));border:1px solid var(--line);border-radius:var(--radius-lg);padding:24px;box-shadow:var(--shadow)}
+.hero{position:relative;overflow:hidden;display:grid;grid-template-columns:1.45fr 1fr;gap:18px;background:linear-gradient(135deg,var(--card),var(--accentsoft));background-size:220% 220%;animation:hero-drift 14s ease-in-out infinite;border:1px solid var(--line);border-radius:var(--radius-lg);padding:24px;box-shadow:var(--shadow)}
+@keyframes hero-drift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.hero h2{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.logo{position:relative}
+.logo::after{content:'';position:absolute;inset:-6px;border-radius:inherit;background:conic-gradient(from 0deg,var(--flag-green),var(--flag-yellow),var(--flag-red),var(--flag-green));opacity:.55;filter:blur(9px);z-index:-1;animation:logo-glow 5s linear infinite}
+@keyframes logo-glow{to{transform:rotate(360deg)}}
 .hero h2{font-size:2rem;margin-bottom:8px;font-family:var(--font-display)}
 .hero p{color:var(--muted);font-size:1.02rem}
 .hero-actions,.inline{display:flex;gap:9px;flex-wrap:wrap;align-items:center}
@@ -110,11 +116,13 @@ h1,h2,h3,h4,p{margin-top:0;font-family:var(--font-display)}
 .answer-line{min-height:60px;border:2px dashed var(--line);border-radius:14px;margin:12px auto;padding:10px;max-width:620px;font-size:1.5rem;font-weight:900}
 .fidel-controls{display:flex;gap:8px;flex-wrap:wrap}
 .fidel-row{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-top:12px}
-.fidel-btn{padding:16px 6px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--text);font-size:1.8rem;font-weight:800}
+.fidel-btn{padding:16px 6px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--text);font-size:1.8rem;font-weight:800;display:flex;flex-direction:column;align-items:center;gap:2px}
 .fidel-btn:hover{background:var(--accentsoft)}
-.big-letter{font-size:5rem;text-align:center;margin:12px 0}
+.big-letter{font-size:5rem;text-align:center;margin:12px 0 2px}
+.big-letter-phon{text-align:center;font-size:1rem;font-weight:700;opacity:.6;letter-spacing:.02em;margin-bottom:6px}
 .family-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
-.family-cell{padding:9px 4px;border-bottom:1px solid var(--line);text-align:center;font-size:1.25rem}
+.family-cell{padding:9px 4px;border-bottom:1px solid var(--line);text-align:center;font-size:1.25rem;display:flex;flex-direction:column;align-items:center;gap:1px}
+.fidel-phon{font-size:.58em;font-weight:700;opacity:.6;letter-spacing:.02em}
 .lesson-list{display:grid;gap:10px}
 .lesson{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:13px;border:1px solid var(--line);border-radius:14px;background:var(--card)}
 .lesson-num{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--accentsoft);color:var(--ok);font-weight:900}
@@ -130,7 +138,7 @@ h1,h2,h3,h4,p{margin-top:0;font-family:var(--font-display)}
 .trace-layout{display:grid;grid-template-columns:320px 1fr;gap:18px;align-items:start}
 .trace-side{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px}
 .trace-family-strip{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin:12px 0}
-.trace-letter-btn{min-height:64px;border:2px solid var(--line);border-radius:13px;background:var(--card);color:var(--text);font-size:2rem;font-weight:900}
+.trace-letter-btn{min-height:64px;border:2px solid var(--line);border-radius:13px;background:var(--card);color:var(--text);font-size:2rem;font-weight:900;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
 .trace-letter-btn.active{border-color:var(--accent);background:var(--accentsoft);color:var(--ok)}
 .trace-canvas-wrap{position:relative;min-height:430px;border:2px solid var(--line);border-radius:18px;background:#fff;overflow:hidden;touch-action:none}
 .trace-guide{position:absolute;inset:0;display:grid;place-items:center;font-size:19rem;font-weight:900;color:rgba(16,24,40,.10);pointer-events:none;user-select:none}
@@ -144,6 +152,15 @@ h1,h2,h3,h4,p{margin-top:0;font-family:var(--font-display)}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .toast .toast-icon{font-size:1.7rem}
 .confetti-piece{position:fixed;top:-12px;width:8px;height:14px;z-index:190;border-radius:2px;pointer-events:none;animation:confetti-fall linear forwards}
+.fly-letter{position:fixed;z-index:250;font-weight:900;font-size:1.7rem;pointer-events:none;transform:translate(-50%,-50%);animation-name:fly-out;animation-timing-function:cubic-bezier(.15,.7,.3,1);animation-fill-mode:forwards;text-shadow:0 2px 6px rgba(0,0,0,.18)}
+.fly-letter-big{font-size:2.8rem}
+@keyframes fly-out{
+  0%{transform:translate(-50%,-50%) scale(.3) rotate(0deg);opacity:1}
+  60%{opacity:1}
+  100%{transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(1.15) rotate(var(--rot));opacity:0}
+}
+.combo-pop{position:fixed;z-index:260;transform:translate(-50%,-120%);font-weight:900;font-size:1.15rem;color:var(--gold);text-shadow:0 2px 8px rgba(0,0,0,.25);pointer-events:none;animation:combo-rise .9s ease-out forwards}
+@keyframes combo-rise{0%{opacity:0;transform:translate(-50%,-90%) scale(.7)}20%{opacity:1;transform:translate(-50%,-140%) scale(1.15)}100%{opacity:0;transform:translate(-50%,-220%) scale(1)}}
 @keyframes confetti-fall{to{transform:translateY(110vh) rotate(540deg);opacity:.15}}
 .flame{display:inline-block;animation:pulse 1.6s ease-in-out infinite}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.25)}}
@@ -171,6 +188,61 @@ select:disabled{cursor:not-allowed}
 /* ===== Sound toggle ===== */
 .sound-toggle{display:flex;align-items:center;gap:6px}
 
+/* ===== Auth: top-bar chip + modal ===== */
+.user-chip{display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 12px 6px 6px}
+.user-avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;display:grid;place-items:center;font-weight:900;font-size:.85rem}
+.user-chip .plan-flag{font-size:.7rem;font-weight:800;padding:2px 7px;border-radius:999px;background:var(--accentsoft);color:var(--ok)}
+.modal-overlay{position:fixed;inset:0;background:rgba(10,10,20,.55);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;z-index:300;padding:16px}
+.modal-overlay.active{display:flex;animation:modal-fade .2s ease}
+@keyframes modal-fade{from{opacity:0}to{opacity:1}}
+.modal-card{position:relative;background:var(--card);color:var(--text);border-radius:20px;padding:26px;max-width:420px;width:100%;box-shadow:0 30px 80px rgba(0,0,0,.35);animation:modal-pop .25s cubic-bezier(.2,.9,.3,1.3)}
+@keyframes modal-pop{from{transform:scale(.9) translateY(10px);opacity:0}to{transform:scale(1) translateY(0);opacity:1}}
+.modal-close{position:absolute;right:14px;top:14px}
+.auth-tabs{display:flex;gap:8px;margin-bottom:16px}
+.auth-tab{flex:1;padding:10px;border-radius:12px;border:1px solid var(--line);background:transparent;font-weight:800;color:var(--text)}
+.auth-tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+#loginForm label,#signupForm label{display:block;margin-bottom:12px;font-weight:700;font-size:.9rem}
+#loginForm input,#signupForm input,#signupForm select{display:block;width:100%;margin-top:5px;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--text)}
+.form-error{color:var(--danger);font-size:.85rem;min-height:18px;margin-bottom:6px;font-weight:700}
+.small-note{font-size:.78rem;margin-top:12px;text-align:center}
+.small-note code{background:var(--accentsoft);padding:1px 5px;border-radius:6px}
+
+/* ===== Account page ===== */
+.profile-card{display:flex;gap:16px;align-items:center;padding:18px;border:1px solid var(--line);border-radius:18px;background:var(--accentsoft);margin-bottom:18px;flex-wrap:wrap}
+.profile-avatar{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;display:grid;place-items:center;font-weight:900;font-size:1.6rem;flex:none}
+.profile-meta strong{font-size:1.2rem}
+.plan-badge{display:inline-block;padding:4px 12px;border-radius:999px;font-weight:800;font-size:.78rem;margin-top:4px}
+.plan-badge.free{background:#eef1f4;color:#51586a}
+.plan-badge.premium{background:#fdf3d8;color:#946200}
+.plan-badge.family{background:#eaf3ff;color:#1c4a96}
+
+/* ===== Plans / subscription ===== */
+.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.plan-card{border:2px solid var(--line);border-radius:20px;padding:22px;background:var(--card);display:flex;flex-direction:column;gap:10px;position:relative}
+.plan-card.featured{border-color:var(--accent2);box-shadow:0 14px 34px rgba(0,0,0,.12)}
+.plan-card .plan-ribbon{position:absolute;top:-12px;right:18px;background:var(--accent2);color:#fff;padding:4px 12px;border-radius:999px;font-size:.75rem;font-weight:900}
+.plan-card .price{font-size:2rem;font-weight:900}
+.plan-card .price span{font-size:.9rem;color:var(--muted);font-weight:600}
+.plan-card ul{padding-left:0;list-style:none;margin:8px 0;display:grid;gap:8px}
+.plan-card ul li{padding-left:24px;position:relative;font-size:.92rem}
+.plan-card ul li::before{content:'✓';position:absolute;left:0;color:var(--ok);font-weight:900}
+.plan-card button{margin-top:auto}
+
+/* ===== Admin dashboard ===== */
+.admin-denied{text-align:center;padding:40px 20px}
+.admin-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+.admin-stat{background:var(--accentsoft);border-radius:14px;padding:16px;text-align:center}
+.admin-stat strong{display:block;font-size:1.6rem}
+.admin-table{width:100%;border-collapse:collapse;margin-bottom:20px}
+.admin-table th,.admin-table td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);font-size:.9rem}
+.admin-table th{color:var(--muted);font-weight:700}
+.role-tag{padding:2px 8px;border-radius:999px;font-size:.72rem;font-weight:800;background:var(--accentsoft);color:var(--ok)}
+.role-tag.admin{background:#fdeeee;color:#b42318}
+.security-list{display:grid;gap:8px}
+.security-list li{padding:10px 12px;background:var(--accentsoft);border-radius:10px;font-size:.9rem}
+
+@media(max-width:900px){.plans-grid{grid-template-columns:1fr}.admin-stats{grid-template-columns:repeat(2,1fr)}}
+
 /* ===================================================== */
 /* ================= THEME: TEEN ======================= */
 /* ===================================================== */
@@ -184,7 +256,8 @@ body.body-teen{background:radial-gradient(circle at 15% 0%,#241b4a 0%,#140f28 45
   --btn-shadow:0 0 0 1px rgba(124,92,255,.4),0 6px 18px rgba(124,92,255,.35);--btn-lift:-2px;
 }
 .mode-teen .topbar{background:rgba(20,15,40,.75)}
-.mode-teen .hero{background:linear-gradient(135deg,#241c46,#1a1433);border-color:#3a2f66}
+.mode-teen .hero{background:linear-gradient(120deg,#2a1f52,#3a1f5e,#161029,#241c46);background-size:280% 280%;border-color:#3a2f66}
+.mode-teen .hero h2{background:linear-gradient(90deg,#a37bff,#28e0c4,#ff8bd6);-webkit-background-clip:text;background-clip:text}
 .mode-teen .trace-canvas-wrap,.mode-teen .trace-guide{background:#0f0b22}
 .mode-teen .trace-guide{color:rgba(255,255,255,.08)}
 .mode-teen .primary{background:linear-gradient(90deg,var(--accent),#a37bff)}
@@ -214,7 +287,7 @@ body.body-kids{background:
 .mode-kids .topbar{background:rgba(255,248,234,.9)}
 .mode-kids .logo{width:60px;height:60px;border-radius:20px;transform:rotate(-4deg);box-shadow:0 6px 0 rgba(58,43,23,.15)}
 .mode-kids .brand h1{font-size:1.5rem}
-.mode-kids .hero{background:linear-gradient(135deg,#fffdf6,#e3faf5);border:3px solid #ffe1a0;border-radius:32px}
+.mode-kids .hero{background:linear-gradient(120deg,#fff6df,#e3faf5,#ffe4ec,#fff6df);background-size:280% 280%;border:3px solid #ffe1a0;border-radius:32px}
 .mode-kids .hero h2{font-size:1.8rem}
 .mode-kids .pill,.mode-kids .secondary,.mode-kids .primary,.mode-kids .ghost{border-radius:999px;border-width:2px;font-weight:800}
 .mode-kids .primary{border-bottom:4px solid #086b5e}
@@ -246,7 +319,7 @@ body.body-kids{background:
 <div class="app mode-kids" id="app">
 <header class="topbar">
   <div class="brand"><div class="logo"><span>ሀ</span></div><div><h1>አማርኛ እንማር</h1><small>Fidel Institute • Amharic, Starter to Advanced</small></div></div>
-  <div class="controls"><select class="pill" id="levelSelect"><option>Starter</option><option>Beginner</option><option>Elementary</option><option>Intermediate</option><option>Advanced</option></select><select class="pill" id="modeSelect"><option value="kids">Kids</option><option value="teen">Teen</option><option value="adult">Adult</option></select><label class="pill sound-toggle"><input type="checkbox" id="soundToggle" checked style="margin:0"/> 🔊</label><button class="pill" id="resetProgress">Reset Progress</button></div>
+  <div class="controls"><select class="pill" id="levelSelect"><option>Starter</option><option>Beginner</option><option>Elementary</option><option>Intermediate</option><option>Advanced</option></select><select class="pill" id="modeSelect"><option value="kids">Kids</option><option value="teen">Teen</option><option value="adult">Adult</option></select><label class="pill sound-toggle"><input type="checkbox" id="soundToggle" checked style="margin:0"/> 🔊</label><button class="pill" id="resetProgress">Reset Progress</button><div id="authArea"></div></div>
 </header>
 <section class="hero"><div><h2>Ethiopia's most complete digital home for Fidel — built like a language institution, not a study app.</h2><p>Master Fidel, build real vocabulary, practice listening and writing, and progress into everyday conversation, reading and grammar. 262 dictionary-checked words, six game modes with hundreds of never-repeating questions per topic, cheerful sound feedback, and earnable Bronze–Platinum badges for every skill you complete.</p><div class="hero-actions"><button class="primary" onclick="openPanel('learn')">Continue Learning</button><button class="secondary" onclick="openPanel('games')">Play a Game</button><button class="secondary" onclick="openPanel('resources')">Resources & Culture</button><button class="secondary" onclick="openPanel('placement')">Placement Test</button></div></div><div class="progress-card"><div class="progress-head"><span>Learning Progress</span><span id="xpText">0 XP</span></div><div class="bar"><div id="xpBar"></div></div><div class="muted" id="progressText">Start your first activity.</div></div></section>
 
@@ -259,6 +332,7 @@ body.body-kids{background:
 <div class="card"><div class="icon">💬</div><h4>Conversations</h4><p>Greetings, family, home, food, shopping, school, travel and everyday situations.</p><button class="secondary" onclick="openPanel('conversation')">Practice Speaking</button></div>
 <div class="card"><div class="icon">📚</div><h4>Resources & Culture</h4><p>Dictionary-sourced Amharic proverbs, quick facts about the Fidel script, and notes on Ethiopian culture and the calendar.</p><button class="secondary" onclick="openPanel('resources')">Explore Resources</button></div>
 <div class="card"><div class="icon">🔁</div><h4>Review & Progress</h4><p>Review learned material, see XP and level, and browse every badge you've earned.</p><button class="secondary" onclick="openPanel('review')">Review Progress</button></div>
+<div class="card"><div class="icon">👑</div><h4>Membership</h4><p>Free, Premium and Family plans — unlock every category, game type and badge tier. Sign up to save your progress to an account.</p><button class="secondary" onclick="openPanel('plans')">View Plans</button></div>
 </div></section>
 
 <section class="section"><h3>Course map</h3><div class="path" id="coursePath"></div></section>
@@ -268,7 +342,11 @@ body.body-kids{background:
 <div class="panel" id="vocab"><div class="panel-head"><div><h3>Picture Vocabulary</h3><p class="muted">Tap Listen to hear the Amharic word when supported by your device. Includes an "All Categories" tab with every word, checked against published Amharic dictionaries.</p></div><button class="close" onclick="closePanels()">✕</button></div><div class="tabs" id="vocabTabs"></div><div class="vocab-grid" id="vocabGrid"></div></div>
 
 <div class="panel" id="resources"><div class="panel-head"><div><h3>Resources & Culture</h3><p class="muted">A small library of facts, proverbs and background — sourced from published Amharic references — to go with your practice.</p></div><button class="close" onclick="closePanels()">✕</button></div>
-<h4>Did you know?</h4>
+<div class="tabs" id="resourceTabs">
+<button class="tab active" data-rtab="facts" onclick="showResourceTab('facts')">Did You Know?</button>
+<button class="tab" data-rtab="proverbs" onclick="showResourceTab('proverbs')">📜 Amharic Proverbs</button>
+</div>
+<div id="resFacts">
 <div class="fact-grid">
 <div class="fact-card"><b>🔡 34 base characters</b>The Fidel (ፊደል) has 34 consonant families, each with 7 vowel orders — so learning the chart unlocks roughly 238 syllable signs at once.</div>
 <div class="fact-card"><b>📜 An abugida, not an alphabet</b>Amharic script is an abugida: each symbol is a consonant+vowel pair, and the vowel changes the shape rather than adding a separate letter.</div>
@@ -277,14 +355,17 @@ body.body-kids{background:
 <div class="fact-card"><b>✍️ Written left to right</b>Unlike its Semitic relatives Arabic and Hebrew, Amharic is written left to right, similar to English.</div>
 <div class="fact-card"><b>🎼 Its own numeral system</b>Ge'ez-derived Amharic numerals look nothing like Arabic numerals — the app currently teaches everyday counting using Arabic numerals, with native numerals planned.</div>
 </div>
-<h4>Amharic Proverbs</h4>
+</div>
+<div id="resProverbs" style="display:none">
+<p class="muted">A growing collection of well-known Amharic proverbs (ምሳሌያዊ አነጋገሮች), each with a phonetic reading and its closest English equivalent or meaning. Tap 🔊 to hear a spoken reading.</p>
 <div id="proverbGrid"></div>
+</div>
 </div>
 
 <div class="panel" id="games"><div class="panel-head"><div><h3>Games & Exercises</h3><p class="muted">Each round uses new items until the pool has been fully used. Correct and incorrect answers play a sound, and finishing a round can earn a Bronze, Silver, Gold or Platinum badge.</p></div><div><strong>Score: <span id="score">0</span></strong> · <span id="roundCount">Round 1</span></div><button class="close" onclick="closePanels()">✕</button></div>
-<div class="game-picker" id="gamePicker"></div><div class="inline"><label>Category <select class="pill" id="gameCategory"></select></label><label>Items / round <select class="pill" id="roundSize"><option>4</option><option selected>6</option><option>8</option><option>10</option></select></label><button class="secondary" onclick="startCurrentGame()">New Round</button></div><div class="game-stage" id="gameStage"></div></div>
+<div class="game-picker" id="gamePicker"></div><div class="inline"><label>Category <select class="pill" id="gameCategory"></select></label><label>Items / round <select class="pill" id="roundSize"><option>4</option><option>5</option><option selected>10</option><option>20</option></select></label><button class="secondary" onclick="startCurrentGame()">New Round</button></div><div class="game-stage" id="gameStage"></div></div>
 
-<div class="panel" id="fidel"><div class="panel-head"><div><h3>Fidel Lab — 34 Families</h3><p class="muted">Choose a family, then practice all seven forms.</p></div><button class="close" onclick="closePanels()">✕</button></div><div class="fidel-controls"><select class="pill" id="familySelect"></select><button class="secondary" onclick="playFamily()">🔊 Play Family</button><button class="secondary" onclick="showAllFamilies()">View All Families</button></div><div class="fidel-row" id="fidelRow"></div><div class="big-letter" id="bigLetter">ሀ</div><div class="muted" style="text-align:center" id="letterHint">Select a letter</div><div id="allFamilies" style="display:none;margin-top:18px"></div></div>
+<div class="panel" id="fidel"><div class="panel-head"><div><h3>Fidel Lab — 34 Families</h3><p class="muted">Choose a family, then practice all seven forms.</p></div><button class="close" onclick="closePanels()">✕</button></div><div class="fidel-controls"><select class="pill" id="familySelect"></select><button class="secondary" onclick="playFamily()">🔊 Play Family</button><button class="secondary" onclick="showAllFamilies()">View All Families</button></div><div class="fidel-row" id="fidelRow"></div><div class="big-letter" id="bigLetter">ሀ</div><div class="big-letter-phon" id="bigLetterPhon">ha</div><div class="muted" style="text-align:center" id="letterHint">Select a letter</div><div id="allFamilies" style="display:none;margin-top:18px"></div></div>
 <div class="panel" id="tracing"><div class="panel-head"><div><h3>Fidel Tracing — 34 Families</h3><p class="muted">Choose a family, select any of its seven letters, and trace directly over the large guide.</p></div><button class="close" onclick="closePanels()">✕</button></div><div class="trace-layout"><div class="trace-side"><label><strong>Fidel family</strong><select class="pill" id="traceFamilySelect" style="width:100%;margin-top:7px"></select></label><div class="trace-nav"><button class="secondary" onclick="previousTraceFamily()">← Previous Family</button><button class="secondary" onclick="nextTraceFamily()">Next Family →</button></div><div class="trace-family-strip" id="traceFamilyStrip"></div><div class="trace-current" id="traceCurrentLabel">ሀ</div><div class="trace-help">The entire 7-letter family stays visible. Tap a letter above to choose what you want to trace.</div><div class="trace-nav"><button class="secondary" onclick="speakTraceLetter()">🔊 Listen</button><button class="secondary" onclick="clearTrace()">Clear Tracing</button><button class="primary" onclick="markTraceComplete()">✓ I Traced It</button></div><div class="trace-complete" id="traceCompleteMsg">Great work! Choose the next letter when ready.</div></div><div><div class="trace-tools"><div><strong id="traceTitle">Trace ሀ</strong><div class="trace-help">Use your finger, stylus, or mouse. Follow the faded Fidel shape.</div></div><button class="ghost" onclick="clearTrace()">↻ Reset</button></div><div class="trace-canvas-wrap" id="traceCanvasWrap"><div class="trace-guide" id="traceGuide">ሀ</div><canvas class="trace-canvas" id="traceCanvas"></canvas></div></div></div></div>
 
 <div class="panel" id="conversation"><div class="panel-head"><div><h3>Everyday Conversations</h3><p class="muted">Beginner phrases with English support. More advanced units can hide translations.</p></div><button class="close" onclick="closePanels()">✕</button></div><div class="tabs" id="conversationTabs"></div><div class="conversation" id="conversationBody"></div></div>
@@ -292,7 +373,39 @@ body.body-kids{background:
 <div class="panel" id="review"><div class="panel-head"><div><h3>Review & Progress</h3><p class="muted">Progress is saved on this device.</p></div><button class="close" onclick="closePanels()">✕</button></div><div class="stats" id="stats"></div><h4 style="margin-top:18px">🏅 Your Badges</h4><div id="badgeShelf"></div><h4 style="margin-top:18px">Quick Review</h4><div class="vocab-grid" id="reviewGrid"></div></div>
 
 <div class="panel" id="placement"><div class="panel-head"><div><h3>Placement Test</h3><p class="muted">A simple adaptive framework covering Fidel, common vocabulary, sentences and practical language.</p></div><button class="close" onclick="closePanels()">✕</button></div><div id="placementBody"><div class="prompt-card"><div class="prompt-big">ሀ</div><p>Do you recognize and read common Fidel characters?</p><div class="inline" style="justify-content:center"><button class="secondary" onclick="placementAnswer(0)">Not yet</button><button class="primary" onclick="placementAnswer(1)">Yes</button></div></div></div></div>
+<div class="panel" id="account"><div class="panel-head"><div><h3>My Account</h3><p class="muted">Profile, plan and learning stats for this device's demo account.</p></div><button class="close" onclick="closePanels()">✕</button></div><div id="accountBody"></div></div>
+
+<div class="panel" id="plans"><div class="panel-head"><div><h3>Membership Plans</h3><p class="muted">Pick the plan that fits your household. No payment is collected in this demo — activating a plan just unlocks the UI.</p></div><button class="close" onclick="closePanels()">✕</button></div><div class="plans-grid" id="plansGrid"></div></div>
+
+<div class="panel" id="admin"><div class="panel-head"><div><h3>Admin Dashboard</h3><p class="muted">Restricted area — demo admin account only.</p></div><button class="close" onclick="closePanels()">✕</button></div><div id="adminBody"></div></div>
+
 <div class="footer">Single-file HTML app • Mobile friendly • GitHub Pages ready • Progress, badges and question history saved locally • Sound effects work fully offline • Vocabulary checked against published Amharic dictionaries</div>
+
+<div class="modal-overlay" id="authModal">
+  <div class="modal-card">
+    <button class="close modal-close" onclick="closeAuthModal()">✕</button>
+    <div class="auth-tabs">
+      <button class="auth-tab active" id="tabLogin" onclick="switchAuthTab('login')">Log In</button>
+      <button class="auth-tab" id="tabSignup" onclick="switchAuthTab('signup')">Sign Up</button>
+    </div>
+    <form id="loginForm" onsubmit="return submitLogin(event)">
+      <label>Email<input type="email" id="loginEmail" required placeholder="you@example.com"></label>
+      <label>Password<input type="password" id="loginPassword" required placeholder="••••••••"></label>
+      <div class="form-error" id="loginError"></div>
+      <button type="submit" class="primary" style="width:100%">Log In</button>
+      <p class="muted small-note">Demo admin: <code>admin@fidel.app</code> / <code>admin123</code></p>
+    </form>
+    <form id="signupForm" style="display:none" onsubmit="return submitSignup(event)">
+      <label>Name<input type="text" id="signupName" required placeholder="Your name"></label>
+      <label>Email<input type="email" id="signupEmail" required placeholder="you@example.com"></label>
+      <label>Password<input type="password" id="signupPassword" required placeholder="At least 6 characters" minlength="6"></label>
+      <label>I am signing up as<select id="signupAge"><option value="kids">A child (parent/guardian set-up)</option><option value="teen">A teen</option><option value="adult">An adult</option></select></label>
+      <div class="form-error" id="signupError"></div>
+      <button type="submit" class="primary" style="width:100%">Create Account</button>
+    </form>
+    <p class="muted small-note">⚠️ Demo only: accounts are stored in this browser's local storage, not on a real server. Don't reuse a real password here.</p>
+  </div>
+</div>
 </div>
 <script>
 const V={
@@ -315,21 +428,219 @@ V.All=(function(){const seen=new Set(),out=[];Object.keys(V).forEach(cat=>{V[cat
 
 const COURSE=[['Starter','Fidel & Sounds','Recognize Fidel families and their seven forms.'],['Starter','First Words','Common objects, people and actions.'],['Beginner','Greetings','Hello, names, polite expressions and simple replies.'],['Beginner','Family & People','Talk about family, age and relationships.'],['Beginner','Body & Clothing','Body parts, clothing and action commands.'],['Elementary','Food & Home','Meals, rooms, furniture and kitchen objects.'],['Elementary','Numbers, Time & School','Counting, days, time and school vocabulary.'],['Intermediate','Everyday Conversation','Shopping, directions, transportation and social situations.'],['Intermediate','Reading & Writing','Short passages, sentence building and dictation.'],['Advanced','Grammar & Expression','Verb patterns, agreement, richer vocabulary and composition.']];
 const FIDEL=[['ሀ','ሁ','ሂ','ሃ','ሄ','ህ','ሆ'],['ለ','ሉ','ሊ','ላ','ሌ','ል','ሎ'],['ሐ','ሑ','ሒ','ሓ','ሔ','ሕ','ሖ'],['መ','ሙ','ሚ','ማ','ሜ','ም','ሞ'],['ሠ','ሡ','ሢ','ሣ','ሤ','ሥ','ሦ'],['ረ','ሩ','ሪ','ራ','ሬ','ር','ሮ'],['ሰ','ሱ','ሲ','ሳ','ሴ','ስ','ሶ'],['ሸ','ሹ','ሺ','ሻ','ሼ','ሽ','ሾ'],['ቀ','ቁ','ቂ','ቃ','ቄ','ቅ','ቆ'],['በ','ቡ','ቢ','ባ','ቤ','ብ','ቦ'],['ቨ','ቩ','ቪ','ቫ','ቬ','ቭ','ቮ'],['ተ','ቱ','ቲ','ታ','ቴ','ት','ቶ'],['ቸ','ቹ','ቺ','ቻ','ቼ','ች','ቾ'],['ኀ','ኁ','ኂ','ኃ','ኄ','ኅ','ኆ'],['ነ','ኑ','ኒ','ና','ኔ','ን','ኖ'],['ኘ','ኙ','ኚ','ኛ','ኜ','ኝ','ኞ'],['አ','ኡ','ኢ','ኣ','ኤ','እ','ኦ'],['ከ','ኩ','ኪ','ካ','ኬ','ክ','ኮ'],['ኸ','ኹ','ኺ','ኻ','ኼ','ኽ','ኾ'],['ወ','ዉ','ዊ','ዋ','ዌ','ው','ዎ'],['ዐ','ዑ','ዒ','ዓ','ዔ','ዕ','ዖ'],['ዘ','ዙ','ዚ','ዛ','ዜ','ዝ','ዞ'],['ዠ','ዡ','ዢ','ዣ','ዤ','ዥ','ዦ'],['የ','ዩ','ዪ','ያ','ዬ','ይ','ዮ'],['ደ','ዱ','ዲ','ዳ','ዴ','ድ','ዶ'],['ጀ','ጁ','ጂ','ጃ','ጄ','ጅ','ጆ'],['ገ','ጉ','ጊ','ጋ','ጌ','ግ','ጎ'],['ጠ','ጡ','ጢ','ጣ','ጤ','ጥ','ጦ'],['ጨ','ጩ','ጪ','ጫ','ጬ','ጭ','ጮ'],['ጰ','ጱ','ጲ','ጳ','ጴ','ጵ','ጶ'],['ጸ','ጹ','ጺ','ጻ','ጼ','ጽ','ጾ'],['ፀ','ፁ','ፂ','ፃ','ፄ','ፅ','ፆ'],['ፈ','ፉ','ፊ','ፋ','ፌ','ፍ','ፎ'],['ፐ','ፑ','ፒ','ፓ','ፔ','ፕ','ፖ']];
+// Sourced from published Amharic-proverb references (allaboutethio.com, easyamharic.com) and
+// cross-checked against their given English readings; transliteration is a simplified phonetic guide.
 const PROVERBS=[
 ['የለማኝ ቅንጡ ይላል ወተት አምጡ','Yelemagn qntu yilal wetet amtu','"Beggars can\'t be choosers."'],
 ['የስጦታ ፈረስ ጥርሱ አይታይም','Yestota feres trsu aytaym','"Don\'t look a gift horse in the mouth."'],
 ['ማየት ማመን ነው','Mayat mamen new','"Seeing is believing."'],
 ['የሚያብረቀርቅ ሁሉ ወርቅ አይደለም','Yemibreqerq hulu werq aydelem','"All that glitters is not gold."'],
 ['ጊዜ ወርቅ ነው','Gize werq new','"Time is gold."'],
-['ሰው የዘራውን ያጭዳል','Sew yezerawn yachdal','"As you sow, so shall you reap."']
+['ሰው የዘራውን ያጭዳል','Sew yezerawn yachdal','"As you sow, so shall you reap."'],
+['የፈሰሰ ውሃ አይታፈስም','Yefesese wiha aytafesim','"Spilled water can\'t be gathered again" — no use crying over what\'s done.'],
+['ከፈረሱ በፊት ጋሪው','Keferesu befit gariw','"The cart before the horse."'],
+['የቸኮለች አፍስሳ ለቀመች','Yechekolech afissa leqemech','"Haste makes waste."'],
+['ገብስ ለገብስ አብሮ ይነፍስ','Gebis legebis abro yinefis','"Birds of a feather flock together."'],
+['ጊዜ የሰጠው ቅል ድንጋይ ይሰብራል','Gize yesetew qil dingay yisebral','What comes too easily breaks just as easily.'],
+['ከሰው ስህተት ከብረት ዝገት አይጠፋም','Kesew sihtet kebiret ziget aytefam','"To err is human" (as rust never leaves iron).'],
+['የሚጮህ ውሻ አይናከስም','Yemichoh wisha aynakesim','"A barking dog never bites" — the loudest threats are often empty.'],
+['አይን አይኑን ያዩት ጀበና ቶሎ አይፈላም','Ayn aynun yayut jebena tolo ayfelam','"A watched pot never boils."'],
+['ለአንድ ብርቱ ሁለት መዳኒቱ','Le\'and biru hulet medanitu','"Two minds are better than one."'],
+['ዘር ከልጓም ይስባል','Zer keliggwam yisbal','"Blood is thicker than water."'],
+['ታሞ ከመማቀቅ አስቀድሞ መጠንቀቅ','Tamo kememaqeq asqedmo metenqeq','"Prevention is better than cure."'],
+['ብረትን መምታት እንደጋለ ነው','Biretin memtat endegale new','"Strike the iron while it\'s hot."'],
+['ውሃ ቀስ በቀስ አለትን ይበሳል','Wiha qes beqes aletin yibesal','Patience wears down even stone — steady effort outlasts force.'],
+['ውበት እንደ ተመልካቹ ነው','Wibet ende temelkachu new','"Beauty is in the eye of the beholder."'],
+['ቀድሞ የገባ እንግዳ እራቱ ፍሪዳ','Qedmo yegeba engida eratu firida','"First come, first served."'],
+['ድስት ግጣሙን አያጣም','Dist gtamun ayatam','"A pot never misses its lid" — everyone finds their match.'],
+['ስራ ከምፈታ ልጄን ላፋታ','Sira kemifeta lijen lafata','"An idle mind is the devil\'s workshop."'],
+['ዝምታ ወርቅ ነው','Zimta werq new','"Silence is golden."'],
+['ሴት ሲበዛ ጎመን ጠነዛ','Set sibeza gomen tenza','"Too many cooks spoil the broth."'],
+['ትዕቢት ውድቀትን ትቀድማለች','Ti\'bit widqetin tiqedmalech','"Pride comes before a fall."'],
+['ባንድ ድንጋይ ሁለት ወፍ','Band dingay hulet wef','"Kill two birds with one stone."'],
+['ከመናገርህ በፊት አስብ','Kemenagerh befit asb','"Think before you speak."'],
+['ጅብ ከሄደ ውሻ ጮኸ','Jib kehede wisha choheh','"The dog barked after the hyena had already gone" — closing the barn door after the horse has bolted.'],
+['የበሰበሰ ዝናብ አይፈራም','Yebesebese zinab ayferam','What has already spoiled has nothing left to fear from the rain — someone with nothing left to lose fears nothing further.']
 ];
-function renderProverbs(){document.getElementById('proverbGrid').innerHTML=PROVERBS.map(p=>`<div class="proverb"><div class="am">${p[0]}</div><div class="translit">${p[1]}</div><div class="eng">${p[2]}</div></div>`).join('')}
+function showResourceTab(tab){
+  document.querySelectorAll('#resourceTabs .tab').forEach(t=>t.classList.toggle('active',t.dataset.rtab===tab));
+  document.getElementById('resFacts').style.display=tab==='facts'?'':'none';
+  document.getElementById('resProverbs').style.display=tab==='proverbs'?'':'none';
+}
+function renderProverbs(){document.getElementById('proverbGrid').innerHTML=PROVERBS.map(p=>`<div class="proverb"><div class="am">${p[0]}</div><div class="translit">${p[1]}</div><div class="eng">${p[2]}</div><button class="secondary" onclick="speak('${p[0].replaceAll("'","\\'")}')" style="margin-top:8px">🔊 Listen</button></div>`).join('')}
 const CONV={Greetings:[['👋','ሰላም!','Hello!'],['🙂','እንዴት ነህ? / ነሽ?','How are you?'],['🙂','ደህና ነኝ።','I am fine.'],['🙏','አመሰግናለሁ።','Thank you.'],['👋','ደህና ሁን / ሁኚ።','Goodbye.']],Home:[['🏠','ይህ ቤቴ ነው።','This is my house.'],['🪑','ወንበሩ የት ነው?','Where is the chair?'],['🚪','በሩን ዝጋ።','Close the door.'],['💡','መብራቱን አብራ።','Turn on the light.']],Food:[['🍽️','ምን መብላት ትፈልጋለህ?','What would you like to eat?'],['💧','ውሃ እፈልጋለሁ።','I would like water.'],['☕','ቡና ትፈልጋለህ?','Would you like coffee?'],['🙏','አዎ፣ አመሰግናለሁ።','Yes, thank you.']],Shopping:[['🛒','ይህ ስንት ነው?','How much is this?'],['💵','ውድ ነው።','It is expensive.'],['🤲','ይህን እፈልጋለሁ።','I would like this.'],['🙏','አመሰግናለሁ።','Thank you.']],Travel:[['🚕','ታክሲ የት ነው?','Where is the taxi?'],['🛣️','ይህ መንገድ ወዴት ይሄዳል?','Where does this road go?'],['🚌','አውቶቡሱ መቼ ይመጣል?','When does the bus come?'],['📍','እዚህ አቁም፣ እባክህ።','Stop here, please.']]};
 
 let P=JSON.parse(localStorage.getItem('amhProgress')||'{"xp":0,"rounds":0,"mastered":0,"streak":1,"badges":{}}');
 P.badges=P.badges||{};
-let gameState={type:'match',category:'Animals',score:0,round:1,pools:{},selectedTile:null,current:[],correct:0,wrong:0};
+let gameState={type:'match',category:'Animals',score:0,round:1,pools:{},selectedTile:null,current:[],correct:0,wrong:0,streak:0};
 function save(){localStorage.setItem('amhProgress',JSON.stringify(P));renderProgress()}
+
+/* =====================================================================
+   ACCOUNTS / SUBSCRIPTION / ADMIN — front-end demo only.
+   IMPORTANT: nothing here is production-secure. There is no server:
+   "passwords" are only lightly obfuscated (base64, NOT hashed) so they
+   are not sitting in plain text in devtools, and anyone with access to
+   this browser's localStorage can read or edit any of it, including
+   the admin flag. This exists to demonstrate the intended UX flow —
+   sign up, log in, subscribe, and an admin view — not to be a real
+   auth system. See the in-app "Security & Privacy" note on the Admin
+   page for what a real deployment needs instead.
+   ===================================================================== */
+const PLANS={
+  free:{name:'Free',price:0,features:['Fidel Lab & tracing for all 34 families','3 vocabulary categories','2 game types per day','Badges up to Silver']},
+  premium:{name:'Premium',price:6.99,features:['All 14 vocabulary categories (262 words)','All 6 game types, unlimited rounds','Every badge tier, incl. Platinum','Offline sound & no ads','1 learner profile']},
+  family:{name:'Family',price:11.99,features:['Everything in Premium','Up to 5 learner profiles','Per-child progress & badge shelf','Priority new-content access']}
+};
+function obf(s){try{return btoa(unescape(encodeURIComponent(s)))}catch(e){return s}}
+function deobf(s){try{return decodeURIComponent(escape(atob(s)))}catch(e){return s}}
+function loadAuthDB(){
+  let db=JSON.parse(localStorage.getItem('amhAuthDB')||'null');
+  if(!db){
+    db={users:{
+      'admin@fidel.app':{name:'Admin',email:'admin@fidel.app',pass:obf('admin123'),role:'admin',plan:'family',joined:'2026-01-01'}
+    },currentUser:null};
+    localStorage.setItem('amhAuthDB',JSON.stringify(db));
+  }
+  return db;
+}
+let AUTH=loadAuthDB();
+function saveAuth(){localStorage.setItem('amhAuthDB',JSON.stringify(AUTH))}
+function currentUser(){return AUTH.currentUser?AUTH.users[AUTH.currentUser]:null}
+function initials(name){return name.split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase()}
+
+function openAuthModal(mode){document.getElementById('authModal').classList.add('active');switchAuthTab(mode||'login')}
+function closeAuthModal(){document.getElementById('authModal').classList.remove('active');document.getElementById('loginError').textContent='';document.getElementById('signupError').textContent=''}
+function switchAuthTab(tab){
+  const isLogin=tab==='login';
+  document.getElementById('tabLogin').classList.toggle('active',isLogin);
+  document.getElementById('tabSignup').classList.toggle('active',!isLogin);
+  document.getElementById('loginForm').style.display=isLogin?'block':'none';
+  document.getElementById('signupForm').style.display=isLogin?'none':'block';
+}
+function submitLogin(e){
+  e.preventDefault();
+  const email=document.getElementById('loginEmail').value.trim().toLowerCase();
+  const pass=document.getElementById('loginPassword').value;
+  const u=AUTH.users[email];
+  if(!u||deobf(u.pass)!==pass){document.getElementById('loginError').textContent='Email or password not recognized.';return false}
+  AUTH.currentUser=email;saveAuth();
+  closeAuthModal();renderAuthArea();
+  flyLetters(document.getElementById('authArea'),14,false);playFanfare();
+  if(u.role==='admin')openPanel('admin');else openPanel('account');
+  return false;
+}
+function submitSignup(e){
+  e.preventDefault();
+  const name=document.getElementById('signupName').value.trim();
+  const email=document.getElementById('signupEmail').value.trim().toLowerCase();
+  const pass=document.getElementById('signupPassword').value;
+  const ageGroup=document.getElementById('signupAge').value;
+  if(AUTH.users[email]){document.getElementById('signupError').textContent='An account with that email already exists.';return false}
+  if(pass.length<6){document.getElementById('signupError').textContent='Password must be at least 6 characters.';return false}
+  AUTH.users[email]={name,email,pass:obf(pass),role:'learner',plan:'free',joined:new Date().toISOString().slice(0,10)};
+  AUTH.currentUser=email;saveAuth();
+  document.getElementById('modeSelect').value=ageGroup;document.getElementById('modeSelect').dispatchEvent(new Event('change'));
+  closeAuthModal();renderAuthArea();
+  flyLetters(document.getElementById('authArea'),24,true);playFanfare();
+  openPanel('account');
+  return false;
+}
+function logout(){AUTH.currentUser=null;saveAuth();renderAuthArea();closePanels();playClickSound()}
+function renderAuthArea(){
+  const el=document.getElementById('authArea');
+  const u=currentUser();
+  if(!u){el.innerHTML=`<button class="pill primary" onclick="openAuthModal('login')" style="border:none">Sign In</button>`;return}
+  el.innerHTML=`<div class="user-chip">
+    <div class="user-avatar">${initials(u.name)}</div>
+    <div>
+      <div style="font-weight:800;font-size:.85rem">${u.name}</div>
+      <span class="plan-flag">${PLANS[u.plan].name}</span>
+    </div>
+    <button class="ghost" onclick="openPanel('account')" title="Account">⚙️</button>
+    ${u.role==='admin'?'<button class="ghost" onclick="openPanel(\'admin\')" title="Admin">🛡️</button>':''}
+    <button class="ghost" onclick="logout()" title="Sign out">↪️</button>
+  </div>`;
+}
+function requireLogin(){if(!currentUser()){openAuthModal('login');return false}return true}
+
+function renderAccountPage(){
+  const body=document.getElementById('accountBody');
+  const u=currentUser();
+  if(!u){body.innerHTML=`<div class="admin-denied"><p>Sign in to see your account.</p><button class="primary" onclick="openAuthModal('login')">Sign In</button></div>`;return}
+  const badgeCount=Object.keys(P.badges).length;
+  body.innerHTML=`
+    <div class="profile-card">
+      <div class="profile-avatar">${initials(u.name)}</div>
+      <div class="profile-meta">
+        <strong>${u.name}</strong><br>
+        <span class="muted">${u.email} • joined ${u.joined}</span><br>
+        <span class="plan-badge ${u.plan}">${PLANS[u.plan].name} plan</span>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><span class="muted">XP</span><strong>${P.xp}</strong></div>
+      <div class="stat"><span class="muted">Rounds</span><strong>${P.rounds}</strong></div>
+      <div class="stat"><span class="muted">Badges</span><strong>${badgeCount}</strong></div>
+      <div class="stat"><span class="muted">Streak</span><strong>${P.streak} 🔥</strong></div>
+    </div>
+    <div class="inline" style="margin-top:18px">
+      <button class="primary" onclick="openPanel('plans')">Manage Subscription</button>
+      <button class="secondary" onclick="openPanel('review')">View Badge Shelf</button>
+      <button class="ghost" onclick="logout()">Sign Out</button>
+    </div>`;
+}
+
+function renderPlansPage(){
+  const u=currentUser();
+  document.getElementById('plansGrid').innerHTML=Object.keys(PLANS).map(id=>{
+    const p=PLANS[id];
+    const isCurrent=u&&u.plan===id;
+    return `<div class="plan-card${id==='premium'?' featured':''}">
+      ${id==='premium'?'<span class="plan-ribbon">Most Popular</span>':''}
+      <h4>${p.name}</h4>
+      <div class="price">${p.price===0?'Free':'$'+p.price.toFixed(2)}${p.price>0?'<span>/month</span>':''}</div>
+      <ul>${p.features.map(f=>`<li>${f}</li>`).join('')}</ul>
+      <button class="${isCurrent?'secondary':'primary'}" ${isCurrent?'disabled':''} onclick="activatePlan('${id}')">${isCurrent?'Current Plan':(u?'Switch to '+p.name:'Sign in to choose')}</button>
+    </div>`;
+  }).join('');
+}
+function activatePlan(id){
+  const u=currentUser();
+  if(!u){openAuthModal('login');return}
+  u.plan=id;saveAuth();
+  renderPlansPage();renderAuthArea();
+  celebrateRoundComplete();
+  toast(`${PLANS[id].name} plan activated (demo — no payment collected)`,'🎉');
+}
+
+function renderAdminPage(){
+  const body=document.getElementById('adminBody');
+  const u=currentUser();
+  if(!u||u.role!=='admin'){body.innerHTML=`<div class="admin-denied"><p>🔒 This area is for admin accounts only.</p><button class="primary" onclick="openAuthModal('login')">Sign In as Admin</button></div>`;return}
+  const users=Object.values(AUTH.users);
+  const planCounts={free:0,premium:0,family:0};
+  users.forEach(x=>{if(planCounts[x.plan]!==undefined)planCounts[x.plan]++});
+  body.innerHTML=`
+    <div class="admin-stats">
+      <div class="admin-stat"><strong>${users.length}</strong><span class="muted">Registered users</span></div>
+      <div class="admin-stat"><strong>${planCounts.premium+planCounts.family}</strong><span class="muted">Paid subscribers</span></div>
+      <div class="admin-stat"><strong>${V.All.length}</strong><span class="muted">Vocabulary words</span></div>
+      <div class="admin-stat"><strong>${Object.keys(V).length-1}</strong><span class="muted">Categories</span></div>
+    </div>
+    <h4>Users (this browser's demo data)</h4>
+    <table class="admin-table"><thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Plan</th><th>Joined</th></tr></thead>
+    <tbody>${users.map(x=>`<tr><td>${x.name}</td><td>${x.email}</td><td><span class="role-tag ${x.role}">${x.role}</span></td><td>${PLANS[x.plan].name}</td><td>${x.joined}</td></tr>`).join('')}</tbody></table>
+    <h4>Security & Privacy — what a real launch needs</h4>
+    <ul class="security-list">
+      <li>🔐 Move auth to a real backend (e.g. Firebase Auth, Supabase Auth, or Auth0) — never store or check passwords in client-side JavaScript.</li>
+      <li>🧂 Passwords must be salted + hashed server-side (bcrypt/argon2), never reversible like this demo's base64 placeholder.</li>
+      <li>🛡️ Enforce role checks (admin vs learner) on the server for every request — a client-side "role" flag like this one can be edited by anyone.</li>
+      <li>💳 Route payments through a PCI-compliant processor's hosted checkout (Stripe, Apple/Google in-app purchase) — never collect raw card numbers yourselves.</li>
+      <li>🧒 Given a kid audience, follow COPPA/GDPR-K rules: verifiable parental consent for under-13 accounts, minimal data collection, no behavioral ad tracking.</li>
+      <li>🔒 Encrypt personal data in transit (HTTPS/TLS) and at rest; log admin actions for audit; rate-limit login attempts.</li>
+      <li>📱 For Play Store / App Store distribution, wrap the app with Capacitor (already used elsewhere in this project) or a native shell, and complete each store's privacy-label / data-safety disclosure honestly.</li>
+    </ul>`;
+}
 function addXP(n){P.xp+=n;save()}
 function renderProgress(){
   const level=Math.floor(P.xp/100)+1;
@@ -339,9 +650,81 @@ function renderProgress(){
   document.getElementById('score').textContent=gameState.score;
 }
 function shuffle(a){let r=[...a];for(let i=r.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[r[i],r[j]]=[r[j],r[i]]}return r}
-function openPanel(id){document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');if(id==='review')renderReview();if(id==='resources')renderProverbs();if(id==='tracing')setTimeout(setupTraceCanvas,60);document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'})}
+function openPanel(id){
+  if((id==='account'||id==='admin')&&!currentUser()){openAuthModal('login');return}
+  const target=document.getElementById(id);
+  if(!target){console.warn('openPanel: no panel with id',id);return}
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));target.classList.add('active');
+  if(id==='review')renderReview();
+  if(id==='resources')renderProverbs();
+  if(id==='tracing')setTimeout(setupTraceCanvas,60);
+  if(id==='account')renderAccountPage();
+  if(id==='plans')renderPlansPage();
+  if(id==='admin')renderAdminPage();
+  target.scrollIntoView({behavior:'smooth',block:'start'});
+}
 function closePanels(){document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'))}
-function speak(t){if('speechSynthesis'in window){let u=new SpeechSynthesisUtterance(t);u.lang='am-ET';speechSynthesis.cancel();speechSynthesis.speak(u)}}
+function toast(html,icon){const t=document.createElement('div');t.className='toast';t.innerHTML=`<span class="toast-icon">${icon||'🔔'}</span><span>${html}</span>`;document.body.appendChild(t);requestAnimationFrame(()=>t.classList.add('show'));setTimeout(()=>{t.classList.remove('show');setTimeout(()=>t.remove(),400)},3200)}
+
+// ===== Fidel → Latin phonetic transliteration =====
+// A simplified, keyboard-friendly reading aid (not strict IPA) — the same scheme most
+// beginner/diaspora Fidel charts use: ሀ=ha ሁ=hu ሂ=hi ሃ=haa ሄ=he ህ=h ሆ=ho
+const FIDEL_BASE=['h','l','h','m','s','r','s','sh','q','b','v','t','ch','h','n','ny','','k','kh','w','','z','zh','y','d','j','g',"t'","ch'","p'","ts'","ts'",'f','p'];
+const FIDEL_VOWEL_FAMILY=new Set([16,20]); // አ and ዐ carry the vowel alone, no consonant
+const ORDER_VOWEL=['a','u','i','aa','e','','o'];
+const ORDER_VOWEL_STANDALONE=['a','u','i','aa','e','i','o'];
+function fidelTranslit(fam,li){
+  if(FIDEL_VOWEL_FAMILY.has(fam))return ORDER_VOWEL_STANDALONE[li];
+  return (FIDEL_BASE[fam]||'')+ORDER_VOWEL[li];
+}
+const CHAR_TRANSLIT={'፣':',','።':'.','፡':' ','፤':';','፥':':','፦':':','፧':'?'};
+FIDEL.forEach((fam,fi)=>fam.forEach((ch,li)=>{CHAR_TRANSLIT[ch]=fidelTranslit(fi,li)}));
+function translit(str){
+  if(!str)return '';
+  let out='';
+  for(const ch of str)out+=(ch in CHAR_TRANSLIT)?CHAR_TRANSLIT[ch]:ch;
+  return out.replace(/\s+/g,' ').trim();
+}
+
+// ===== speech (Web Speech API) — with voice-fallback + Chrome cancel/speak race fix =====
+// Most devices have NO Amharic voice installed, and browsers silently drop an utterance
+// when the requested voice/lang isn't found — that's the #1 cause of "no audio" reports.
+// So: use a real Amharic voice when one exists, otherwise fall back to reading the Latin
+// phonetic transliteration through the device's default (near-universally available) voice,
+// so playback is essentially never silent.
+let ttsVoices=[];
+function loadTtsVoices(){if(!('speechSynthesis'in window))return;const v=speechSynthesis.getVoices();if(v&&v.length)ttsVoices=v}
+if('speechSynthesis'in window){loadTtsVoices();speechSynthesis.onvoiceschanged=loadTtsVoices;setTimeout(loadTtsVoices,300);setTimeout(loadTtsVoices,1200)}
+let speakWarned=false,noVoiceWarned=false;
+function speak(t){
+  if(!('speechSynthesis'in window)){
+    if(!speakWarned){speakWarned=true;toast('Voice playback isn\'t supported in this browser — try Chrome, Edge or Safari.','🔇')}
+    return;
+  }
+  try{speechSynthesis.cancel()}catch(e){}
+  // Chrome drops an utterance queued in the same tick as cancel(); a short delay avoids that race
+  setTimeout(()=>{
+    if(!ttsVoices.length)loadTtsVoices();
+    if(!ttsVoices.length){
+      if(!noVoiceWarned){noVoiceWarned=true;toast('This device has no text-to-speech voices installed, so playback has no sound here.','🔇')}
+      // still attempt it — some browsers populate voices asynchronously right after the first speak() call
+    }
+    const amVoice=ttsVoices.find(v=>/^am(-|_|$)/i.test(v.lang));
+    const u=new SpeechSynthesisUtterance();
+    if(amVoice){
+      u.text=t;u.voice=amVoice;u.lang=amVoice.lang;u.rate=0.9;
+    }else{
+      const phon=translit(t);
+      u.text=phon||t;
+      const enVoice=ttsVoices.find(v=>/^en/i.test(v.lang))||ttsVoices.find(v=>v.default)||ttsVoices[0];
+      if(enVoice){u.voice=enVoice;u.lang=enVoice.lang}else{u.lang='en-US'}
+      u.rate=0.82;
+    }
+    u.pitch=1;u.volume=1;
+    u.onerror=()=>{if(!speakWarned){speakWarned=true;toast('Voice playback failed on this device — check your volume and try again.','🔇')}};
+    try{speechSynthesis.speak(u)}catch(e){if(!speakWarned){speakWarned=true;toast('Voice playback failed to start — check your device volume and try again.','🔇')}}
+  },40);
+}
 
 // ===== sound effects (Web Audio API — no external files, works fully offline) =====
 let actx=null;
@@ -360,6 +743,78 @@ function playIncorrectSound(){
   beep(246.94,0.2,'triangle',0.08,0.11);
 }
 function playClickSound(){beep(660,0.05,'sine',0,0.06)}
+function playSparkle(n){
+  // quick shimmer of high, short notes layered on top of the main chime
+  for(let i=0;i<n;i++){beep(1400+Math.random()*900,0.06,'triangle',i*0.035,0.05)}
+}
+function playComboSound(level){
+  // each streak milestone bumps the whole run up a musical step — mirrors a slot machine's rising urgency, without ever penalizing a miss
+  const base=523.25*Math.pow(1.06,Math.min(level,12));
+  beep(base,0.09,'sine',0,0.15);
+  beep(base*1.26,0.09,'sine',0.07,0.15);
+  beep(base*1.5,0.16,'sine',0.14,0.16);
+  playSparkle(3+Math.min(level,5));
+}
+function playFanfare(){
+  // bigger ascending run + a held chord — reserved for finishing a whole round or set
+  const notes=[523.25,659.25,783.99,1046.5,1318.5];
+  notes.forEach((f,i)=>beep(f,0.14,'sine',i*0.09,0.16));
+  const chordAt=notes.length*0.09+0.05;
+  [523.25,659.25,987.77].forEach(f=>beep(f,0.6,'sine',chordAt,0.12));
+  playSparkle(10);
+}
+
+// ===== flying Fidel letters — the "excitement" layer =====
+const FLY_GLYPHS=FIDEL.flat();
+const FLY_COLORS=['#0eb39e','#ff7a45','#ffb400','#7c5cff','#3aa0ff','#12b76a','#fedd00','#da121a'];
+function flyLetters(originEl,count,big){
+  let ox=window.innerWidth/2, oy=window.innerHeight/2;
+  if(originEl&&originEl.getBoundingClientRect){const r=originEl.getBoundingClientRect();ox=r.left+r.width/2;oy=r.top+r.height/2}
+  for(let i=0;i<count;i++){
+    const el=document.createElement('div');
+    el.className='fly-letter'+(big?' fly-letter-big':'');
+    el.textContent=FLY_GLYPHS[Math.floor(Math.random()*FLY_GLYPHS.length)];
+    el.style.color=FLY_COLORS[Math.floor(Math.random()*FLY_COLORS.length)];
+    const angle=Math.random()*Math.PI*2;
+    const dist=big?(220+Math.random()*420):(70+Math.random()*140);
+    const dx=Math.cos(angle)*dist;
+    const dy=Math.sin(angle)*dist-(big?260:70);
+    const rot=(Math.random()*720-360)+'deg';
+    const dur=(big?1.3:0.8)+Math.random()*0.5;
+    el.style.left=(big?(Math.random()*window.innerWidth):ox)+'px';
+    el.style.top=(big?(window.innerHeight+20):oy)+'px';
+    el.style.setProperty('--dx',dx+'px');
+    el.style.setProperty('--dy',dy+'px');
+    el.style.setProperty('--rot',rot);
+    el.style.animationDuration=dur+'s';
+    document.body.appendChild(el);
+    setTimeout(()=>el.remove(),dur*1000+80);
+  }
+}
+function celebrateCorrect(originEl){
+  gameState.streak=(gameState.streak||0)+1;
+  const milestone=gameState.streak>0&&gameState.streak%3===0;
+  playCorrectSound();
+  if(milestone)playComboSound(Math.floor(gameState.streak/3));else playSparkle(2);
+  flyLetters(originEl,milestone?10:4,false);
+  if(milestone)showComboBadgeAt(originEl,gameState.streak);
+}
+function celebrateMiss(){gameState.streak=0;playIncorrectSound()}
+function celebrateRoundComplete(){
+  playFanfare();
+  flyLetters(null,36,true);
+  spawnConfetti();
+}
+function showComboBadgeAt(originEl,streak){
+  let ox=window.innerWidth/2, oy=window.innerHeight/2;
+  if(originEl&&originEl.getBoundingClientRect){const r=originEl.getBoundingClientRect();ox=r.left+r.width/2;oy=r.top}
+  const el=document.createElement('div');
+  el.className='combo-pop';
+  el.textContent=streak+' in a row!';
+  el.style.left=ox+'px';el.style.top=oy+'px';
+  document.body.appendChild(el);
+  setTimeout(()=>el.remove(),1100);
+}
 
 // ===== badges (standard accuracy-based metrics, like most language apps) =====
 function tierRank(t){return {bronze:1,silver:2,gold:3,platinum:4}[t]||0}
@@ -415,7 +870,19 @@ function renderBadges(){
 // course
 document.getElementById('coursePath').innerHTML=COURSE.map((x,i)=>`<div class="unit"><span class="badge">${x[0].toUpperCase()}</span><h4>${i+1}. ${x[1]}</h4><p class="muted">${x[2]}</p></div>`).join('');
 document.getElementById('lessonList').innerHTML=COURSE.map((x,i)=>`<div class="lesson"><div class="lesson-num">${i+1}</div><div><strong>${x[1]}</strong><div class="muted">${x[2]}</div></div><button class="secondary" onclick="lessonStart('${x[1]}')">Start</button></div>`).join('');
-function lessonStart(name){addXP(2);openPanel(name==='Fidel & Sounds'?'fidel':name.includes('Conversation')?'conversation':'vocab')}
+const LESSON_ROUTES={
+  'Fidel & Sounds':()=>openPanel('fidel'),
+  'First Words':()=>{openPanel('vocab');renderVocab('Animals')},
+  'Greetings':()=>{openPanel('conversation');renderConversation('Greetings')},
+  'Family & People':()=>{openPanel('vocab');renderVocab('People')},
+  'Body & Clothing':()=>{openPanel('vocab');renderVocab('Body')},
+  'Food & Home':()=>{openPanel('vocab');renderVocab('Food')},
+  'Numbers, Time & School':()=>{openPanel('vocab');renderVocab('Numbers')},
+  'Everyday Conversation':()=>{openPanel('conversation');renderConversation('Shopping')},
+  'Reading & Writing':()=>openPanel('games'),
+  'Grammar & Expression':()=>openPanel('resources')
+};
+function lessonStart(name){addXP(2);(LESSON_ROUTES[name]||(()=>openPanel('vocab')))()}
 
 // vocab
 Object.keys(V).forEach((cat,i)=>{let b=document.createElement('button');b.className='tab'+(i===0?' active':'');b.textContent=cat==='All'?'All Categories':cat;b.dataset.cat=cat;b.onclick=()=>renderVocab(cat);document.getElementById('vocabTabs').appendChild(b)});
@@ -431,7 +898,8 @@ function completeRound(){
   const tier=computeTier(gameState.correct,total,gameState.wrong);
   P.rounds++;addXP(10);gameState.round++;
   document.getElementById('roundCount').textContent='Round '+gameState.round;
-  if(tier)awardBadge(meta.key,tier,meta.label);
+  celebrateRoundComplete();
+  if(tier)setTimeout(()=>awardBadge(meta.key,tier,meta.label),450);
   gameState.correct=0;gameState.wrong=0;
 }
 
@@ -481,12 +949,12 @@ function tryMatch(tile,slot){
   const fb=document.getElementById('feedback');
   if(tile.dataset.id===slot.dataset.id){
     slot.classList.add('correct');tile.classList.add('used');slot.insertAdjacentHTML('beforeend',`<span class="amh">${tile.textContent}</span>`);
-    gameState.score+=10;gameState.correct++;P.mastered++;addXP(2);playCorrectSound();
+    gameState.score+=10;gameState.correct++;P.mastered++;addXP(2);celebrateCorrect(slot);
     fb.className='feedback ok';fb.textContent='Correct! ✓';tile.draggable=false;gameState.selectedTile=null;
     document.getElementById('score').textContent=gameState.score;
     if([...document.querySelectorAll('.word-tile')].every(x=>x.classList.contains('used'))){completeRound();fb.textContent='Round complete! Every item in this round was matched. Choose New Round for fresh items.'}
   } else {
-    gameState.wrong++;playIncorrectSound();
+    gameState.wrong++;celebrateMiss();
     fb.className='feedback bad';fb.textContent='Try again — that word belongs to another picture.';
   }
 }
@@ -513,8 +981,8 @@ function nextListen(items){
   setTimeout(()=>speak(x[2]),250);
 }
 function answerListen(el,id,correct){
-  if(id===correct){el.classList.add('correct');gameState.score+=10;gameState.correct++;addXP(2);playCorrectSound();seqIndex++;setTimeout(()=>nextListen(gameState.current),350)}
-  else{el.classList.add('wrong');gameState.wrong++;playIncorrectSound()}
+  if(id===correct){el.classList.add('correct');gameState.score+=10;gameState.correct++;addXP(2);celebrateCorrect(el);seqIndex++;setTimeout(()=>nextListen(gameState.current),350)}
+  else{el.classList.add('wrong');gameState.wrong++;celebrateMiss()}
   renderProgress();
 }
 
@@ -539,8 +1007,8 @@ function nextBuilder(items){
 function addBuild(c,el){buildAnswer.push(c);document.getElementById('answerLine').textContent=buildAnswer.join('');el.disabled=true}
 function checkBuild(correct){
   const feedback=document.getElementById('feedback');
-  if(buildAnswer.join('')===correct){feedback.className='feedback ok';feedback.textContent='Correct!';gameState.score+=10;gameState.correct++;addXP(2);playCorrectSound();seqIndex++;setTimeout(()=>nextBuilder(gameState.current),400)}
-  else{feedback.className='feedback bad';feedback.textContent='Not quite. Reset and try again.';gameState.wrong++;playIncorrectSound()}
+  if(buildAnswer.join('')===correct){feedback.className='feedback ok';feedback.textContent='Correct!';gameState.score+=10;gameState.correct++;addXP(2);celebrateCorrect(feedback);seqIndex++;setTimeout(()=>nextBuilder(gameState.current),400)}
+  else{feedback.className='feedback bad';feedback.textContent='Not quite. Reset and try again.';gameState.wrong++;celebrateMiss()}
   renderProgress();
 }
 function renderChoice(items,note){seqIndex=0;const gameStage=document.getElementById('gameStage');gameStage.innerHTML=`<div class="game-toolbar"><strong>Choose the correct answer.</strong><span class="round-note">${note}</span></div><div class="round-note" id="roundProgress"></div><div id="sequenceArea"></div>`;nextChoice(items)}
@@ -560,8 +1028,8 @@ function nextChoice(items){
   sequenceArea.innerHTML=`<div class="prompt-card">${promptHtml}<div class="quiz-grid">${optsHtml}</div></div>`;
 }
 function answerSimple(el,id,correct,type){
-  if(id===correct){el.classList.add('correct');gameState.score+=10;gameState.correct++;addXP(2);playCorrectSound();seqIndex++;setTimeout(()=>type==='missing'?nextMissing(gameState.current):nextChoice(gameState.current),350)}
-  else{el.classList.add('wrong');gameState.wrong++;playIncorrectSound()}
+  if(id===correct){el.classList.add('correct');gameState.score+=10;gameState.correct++;addXP(2);celebrateCorrect(el);seqIndex++;setTimeout(()=>type==='missing'?nextMissing(gameState.current):nextChoice(gameState.current),350)}
+  else{el.classList.add('wrong');gameState.wrong++;celebrateMiss()}
   renderProgress();
 }
 
@@ -592,27 +1060,27 @@ function nextFidelQuiz(items){
   }
 }
 function answerFidelQuiz(el,val,correct){
-  if(String(val)===String(correct)){el.classList.add('correct');gameState.score+=10;gameState.correct++;addXP(2);playCorrectSound();seqIndex++;setTimeout(()=>nextFidelQuiz(gameState.current),350)}
-  else{el.classList.add('wrong');gameState.wrong++;playIncorrectSound()}
+  if(String(val)===String(correct)){el.classList.add('correct');gameState.score+=10;gameState.correct++;addXP(2);celebrateCorrect(el);seqIndex++;setTimeout(()=>nextFidelQuiz(gameState.current),350)}
+  else{el.classList.add('wrong');gameState.wrong++;celebrateMiss()}
   renderProgress();
 }
 
 // fidel lab
 FIDEL.forEach((f,i)=>document.getElementById('familySelect').insertAdjacentHTML('beforeend',`<option value="${i}">${f[0]} family</option>`));
 document.getElementById('familySelect').onchange=renderFamily;
-function renderFamily(){const f=FIDEL[+document.getElementById('familySelect').value];document.getElementById('fidelRow').innerHTML=f.map((c,i)=>`<button class="fidel-btn" onclick="pickFidel('${c}',${i})">${c}</button>`).join('');pickFidel(f[0],0)}
-function pickFidel(c,i){document.getElementById('bigLetter').textContent=c;document.getElementById('letterHint').textContent=`Order ${i+1} • tap Listen or another character`;speak(c)}
-function playFamily(){let f=FIDEL[+document.getElementById('familySelect').value],i=0;let timer=setInterval(()=>{if(i>=f.length)return clearInterval(timer);document.getElementById('bigLetter').textContent=f[i];speak(f[i]);i++},650)}
-function showAllFamilies(){const allFamilies=document.getElementById('allFamilies');allFamilies.style.display=allFamilies.style.display==='none'?'block':'none';allFamilies.innerHTML=FIDEL.map(f=>`<div class="family-grid">${f.map(c=>`<div class="family-cell">${c}</div>`).join('')}</div>`).join('')}
+function renderFamily(){const fi=+document.getElementById('familySelect').value;const f=FIDEL[fi];document.getElementById('fidelRow').innerHTML=f.map((c,i)=>`<button class="fidel-btn" onclick="pickFidel('${c}',${i})">${c}<span class="fidel-phon">${fidelTranslit(fi,i)}</span></button>`).join('');pickFidel(f[0],0)}
+function pickFidel(c,i){const fi=+document.getElementById('familySelect').value;document.getElementById('bigLetter').textContent=c;document.getElementById('bigLetterPhon').textContent=fidelTranslit(fi,i);document.getElementById('letterHint').textContent=`Order ${i+1} • sounds like "${fidelTranslit(fi,i)}" • tap Listen or another character`;speak(c)}
+function playFamily(){const fi=+document.getElementById('familySelect').value;let f=FIDEL[fi],i=0;let timer=setInterval(()=>{if(i>=f.length)return clearInterval(timer);document.getElementById('bigLetter').textContent=f[i];document.getElementById('bigLetterPhon').textContent=fidelTranslit(fi,i);speak(f[i]);i++},650)}
+function showAllFamilies(){const allFamilies=document.getElementById('allFamilies');allFamilies.style.display=allFamilies.style.display==='none'?'block':'none';allFamilies.innerHTML=FIDEL.map((f,fi)=>`<div class="family-grid">${f.map((c,li)=>`<div class="family-cell">${c}<span class="fidel-phon">${fidelTranslit(fi,li)}</span></div>`).join('')}</div>`).join('')}
 renderFamily();
 
 // tracing
 let traceFamilyIndex=0, traceLetterIndex=0, traceCtx=null, traceDrawing=false, traceLast=null;
 FIDEL.forEach((f,i)=>document.getElementById('traceFamilySelect').insertAdjacentHTML('beforeend',`<option value="${i}">${f[0]} family</option>`));
 document.getElementById('traceFamilySelect').onchange=()=>{traceFamilyIndex=+document.getElementById('traceFamilySelect').value;traceLetterIndex=0;renderTraceFamily()};
-function renderTraceFamily(){document.getElementById('traceFamilySelect').value=traceFamilyIndex;const f=FIDEL[traceFamilyIndex];document.getElementById('traceFamilyStrip').innerHTML=f.map((c,i)=>`<button class="trace-letter-btn${i===traceLetterIndex?' active':''}" onclick="selectTraceLetter(${i})">${c}</button>`).join('');updateTraceLetter();}
+function renderTraceFamily(){document.getElementById('traceFamilySelect').value=traceFamilyIndex;const f=FIDEL[traceFamilyIndex];document.getElementById('traceFamilyStrip').innerHTML=f.map((c,i)=>`<button class="trace-letter-btn${i===traceLetterIndex?' active':''}" onclick="selectTraceLetter(${i})">${c}<span class="fidel-phon">${fidelTranslit(traceFamilyIndex,i)}</span></button>`).join('');updateTraceLetter();}
 function selectTraceLetter(i){traceLetterIndex=i;renderTraceFamily()}
-function updateTraceLetter(){const c=FIDEL[traceFamilyIndex][traceLetterIndex];document.getElementById('traceGuide').textContent=c;document.getElementById('traceCurrentLabel').textContent=c;document.getElementById('traceTitle').textContent='Trace '+c;document.getElementById('traceCompleteMsg').style.display='none';clearTrace()}
+function updateTraceLetter(){const c=FIDEL[traceFamilyIndex][traceLetterIndex];const p=fidelTranslit(traceFamilyIndex,traceLetterIndex);document.getElementById('traceGuide').textContent=c;document.getElementById('traceCurrentLabel').textContent=`${c} — "${p}"`;document.getElementById('traceTitle').textContent=`Trace ${c} (sounds like "${p}")`;document.getElementById('traceCompleteMsg').style.display='none';clearTrace()}
 function previousTraceFamily(){traceFamilyIndex=(traceFamilyIndex-1+FIDEL.length)%FIDEL.length;traceLetterIndex=0;renderTraceFamily()}
 function nextTraceFamily(){traceFamilyIndex=(traceFamilyIndex+1)%FIDEL.length;traceLetterIndex=0;renderTraceFamily()}
 function speakTraceLetter(){speak(FIDEL[traceFamilyIndex][traceLetterIndex])}
@@ -673,6 +1141,7 @@ document.getElementById('soundToggle').checked=soundEnabled;
 document.getElementById('soundToggle').addEventListener('change',e=>{soundEnabled=e.target.checked;localStorage.setItem('amhSound',soundEnabled?'on':'off');if(soundEnabled)playClickSound()});
 document.getElementById('resetProgress').onclick=()=>{if(confirm('Reset saved learning progress, badges and unique-question history?')){localStorage.removeItem('amhProgress');P={xp:0,rounds:0,mastered:0,streak:1,badges:{}};gameState.pools={};gameState.score=0;gameState.round=1;renderProgress();startCurrentGame()}};
 renderProgress();startCurrentGame();
+renderAuthArea();
 </script>
 </body>
 </html>
