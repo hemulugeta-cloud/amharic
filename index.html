@@ -4,10 +4,143 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>አማርኛ እንማር — Full Learning App</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Manrope:wght@500;700;800&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f6f8fb;--card:#fff;--text:#1f2937;--muted:#667085;--line:#e4e7ec;--accent:#267a53;--accentsoft:#eaf7f0;--gold:#b7791f;--blue:#2457c5;--danger:#b42318;--ok:#067647;--shadow:0 10px 30px rgba(16,24,40,.08)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif}button,input,select{font:inherit}button{cursor:pointer;transition:transform .12s ease,box-shadow .12s ease}button:active{transform:scale(.97)}.app{max-width:1280px;margin:auto;padding:14px}.topbar{position:sticky;top:0;z-index:20;background:rgba(246,248,251,.94);backdrop-filter:blur(10px);display:flex;gap:12px;align-items:center;justify-content:space-between;padding:10px 0 12px;flex-wrap:wrap}.brand{display:flex;gap:10px;align-items:center}.logo{width:50px;height:50px;border-radius:15px;background:white;border:1px solid var(--line);box-shadow:var(--shadow);display:grid;place-items:center;font-size:29px;font-weight:900;color:var(--accent)}h1,h2,h3,h4,p{margin-top:0}.brand h1{font-size:1.22rem;margin-bottom:2px}.brand small{color:var(--muted)}.controls{display:flex;gap:8px;flex-wrap:wrap}.pill,.secondary,.primary,.ghost{border-radius:12px;padding:10px 13px;border:1px solid var(--line);background:#fff}.primary{background:var(--accent);color:white;border-color:var(--accent);font-weight:800}.secondary{font-weight:700}.ghost{background:transparent}.hero{display:grid;grid-template-columns:1.45fr 1fr;gap:18px;background:linear-gradient(135deg,#fff,#edf8f2);border:1px solid #dceee4;border-radius:26px;padding:24px;box-shadow:var(--shadow)}.hero h2{font-size:2rem;margin-bottom:8px}.hero p{color:var(--muted);font-size:1.02rem}.hero-actions,.inline{display:flex;gap:9px;flex-wrap:wrap;align-items:center}.progress-card,.card,.panel,.unit,.mini{background:#fff;border:1px solid var(--line);border-radius:18px}.progress-card{padding:16px}.progress-head{display:flex;justify-content:space-between;font-weight:800}.bar{height:12px;background:#eef1f4;border-radius:999px;overflow:hidden;margin:10px 0}.bar>div{height:100%;background:var(--accent);width:0;transition:width .4s ease}.muted{color:var(--muted)}.section{margin-top:22px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.card{padding:17px;box-shadow:0 2px 8px rgba(16,24,40,.03)}.card:hover{box-shadow:var(--shadow);transform:translateY(-1px)}.icon{font-size:2rem}.card h4{margin:9px 0 5px}.card p{color:var(--muted)}.card button{width:100%}.path{display:flex;gap:12px;overflow:auto;padding-bottom:8px}.unit{min-width:210px;padding:16px}.badge{display:inline-block;border-radius:999px;padding:5px 8px;background:var(--accentsoft);color:var(--ok);font-size:.78rem;font-weight:900}.panel{display:none;padding:20px;margin-top:18px;box-shadow:var(--shadow)}.panel.active{display:block}.panel-head{display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap}.close{border:0;background:#f2f4f7;border-radius:10px;padding:8px 11px}.tabs{display:flex;gap:8px;overflow:auto;padding:4px 0 10px}.tab{white-space:nowrap;border:1px solid var(--line);background:#fff;padding:9px 12px;border-radius:999px;font-weight:700}.tab.active{background:var(--accent);color:white;border-color:var(--accent)}.vocab-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.vocab{background:#fbfcfd;border:1px solid var(--line);border-radius:14px;padding:13px;text-align:center}.pic{font-size:2.7rem}.amh{font-size:1.5rem;font-weight:900;margin:4px 0}.eng{color:var(--muted)}.game-picker{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}.game-choice{padding:12px;border:1px solid var(--line);border-radius:14px;background:#fff;font-weight:800}.game-choice.active{background:var(--accentsoft);border-color:#a9dcc0;color:var(--ok)}.game-stage{border:1px dashed #ccd2d8;border-radius:18px;padding:16px;background:#fcfdfd}.game-toolbar{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:4px}.round-note{font-size:.92rem;color:var(--muted)}.match-board{display:grid;grid-template-columns:1fr 1fr;gap:16px}.image-slots,.word-bank{display:grid;gap:10px}.image-slot{min-height:108px;border:2px dashed #cfd6dd;background:#fff;border-radius:16px;padding:12px;display:flex;align-items:center;justify-content:space-between;gap:12px}.image-slot .slot-pic{font-size:3rem}.image-slot .label{font-weight:700;color:var(--muted)}.image-slot.dragover{border-color:var(--blue);background:#eef4ff}.image-slot.correct{border-color:#75c69a;background:#ecfdf3}.word-tile{border:1px solid var(--line);border-radius:13px;background:white;padding:13px;text-align:center;font-size:1.22rem;font-weight:900;box-shadow:0 3px 8px rgba(16,24,40,.05);touch-action:none}.word-tile[draggable="true"]{cursor:grab}.word-tile.selected{outline:3px solid #93b4ff}.word-tile.used{opacity:.35;pointer-events:none}.feedback{min-height:26px;margin-top:10px;font-weight:800}.feedback.ok{color:var(--ok)}.feedback.bad{color:var(--danger)}.quiz-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.quiz-option{padding:14px;border:1px solid var(--line);border-radius:13px;background:#fff}.quiz-option.correct{background:#ecfdf3;border-color:#75c69a}.quiz-option.wrong{background:#fff1f0;border-color:#f0b4ae}.prompt-card{text-align:center;padding:20px}.prompt-big{font-size:3rem;font-weight:900;margin:8px 0}.builder-bank{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}.letter-chip{padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:#fff;font-size:1.4rem;font-weight:900}.letter-chip:disabled{opacity:.35}.answer-line{min-height:60px;border:2px dashed #cfd6dd;border-radius:14px;margin:12px auto;padding:10px;max-width:620px;font-size:1.5rem;font-weight:900}.fidel-controls{display:flex;gap:8px;flex-wrap:wrap}.fidel-row{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-top:12px}.fidel-btn{padding:16px 6px;border:1px solid var(--line);border-radius:12px;background:#fff;font-size:1.8rem;font-weight:800}.fidel-btn:hover{background:var(--accentsoft)}.big-letter{font-size:5rem;text-align:center;margin:12px 0}.family-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}.family-cell{padding:9px 4px;border-bottom:1px solid #eee;text-align:center;font-size:1.25rem}.lesson-list{display:grid;gap:10px}.lesson{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:13px;border:1px solid var(--line);border-radius:14px;background:#fff}.lesson-num{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--accentsoft);color:var(--ok);font-weight:900}.conversation{display:grid;gap:10px}.bubble{max-width:760px;border-radius:16px;padding:13px 15px;background:#f2f4f7}.bubble.me{margin-left:auto;background:#eaf7f0}.bubble .am{font-size:1.25rem;font-weight:800}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.stat{padding:14px;border:1px solid var(--line);border-radius:14px;background:#fff}.stat strong{display:block;font-size:1.35rem}.footer{text-align:center;color:var(--muted);padding:30px 10px}.mode-kids .vocab .pic{font-size:3.4rem}.mode-kids .amh{font-size:1.7rem}.mode-kids .card,.mode-kids .unit{border-width:2px}.mode-adult .hero{background:#fff}.sr{position:absolute;left:-9999px}.trace-layout{display:grid;grid-template-columns:320px 1fr;gap:18px;align-items:start}.trace-side{background:#fbfcfd;border:1px solid var(--line);border-radius:16px;padding:14px}.trace-family-strip{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin:12px 0}.trace-letter-btn{min-height:64px;border:2px solid var(--line);border-radius:13px;background:#fff;font-size:2rem;font-weight:900}.trace-letter-btn.active{border-color:var(--accent);background:var(--accentsoft);color:var(--ok)}.trace-canvas-wrap{position:relative;min-height:430px;border:2px solid var(--line);border-radius:18px;background:#fff;overflow:hidden;touch-action:none}.trace-guide{position:absolute;inset:0;display:grid;place-items:center;font-size:19rem;font-weight:900;color:rgba(16,24,40,.10);pointer-events:none;user-select:none}.trace-canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none}.trace-current{text-align:center;font-size:2.2rem;font-weight:900;margin:4px 0}.trace-help{color:var(--muted);font-size:.95rem}.trace-nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.trace-tools{display:flex;gap:8px;flex-wrap:wrap;justify-content:space-between;align-items:center;margin-bottom:10px}.trace-complete{padding:10px 12px;border-radius:12px;background:#ecfdf3;color:var(--ok);font-weight:800;display:none}
-.toast{position:fixed;left:50%;top:18px;transform:translateX(-50%) translateY(-16px);background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 20px;box-shadow:var(--shadow);z-index:200;display:flex;gap:10px;align-items:center;font-weight:900;opacity:0;transition:all .35s ease;pointer-events:none}
+/* ===== Base tokens (Adult theme = default) ===== */
+:root{
+  --bg:#f3f5f8;--card:#ffffff;--text:#1b2430;--muted:#657085;--line:#e1e6ee;
+  --accent:#1f6f4d;--accent2:#a9781f;--accentsoft:#e8f4ee;
+  --gold:#a9781f;--blue:#2456b8;--danger:#b42318;--ok:#0d7a4f;
+  --shadow:0 10px 30px rgba(16,24,40,.08);
+  --radius-lg:20px;--radius-md:14px;
+  --font-main:'Inter',system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --font-display:'Inter',system-ui,sans-serif;
+  --btn-shadow:none;--btn-lift:-1px;
+}
+/* Ethiopian flag stripes used by the logo mark in every theme */
+:root{--flag-green:#0b8a3e;--flag-yellow:#fedd00;--flag-red:#da121a}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-main);transition:background .3s ease,color .3s ease}
+button,input,select{font:inherit}
+button{cursor:pointer;transition:transform .12s ease,box-shadow .12s ease}
+button:active{transform:scale(.97)}
+.app{max-width:1280px;margin:auto;padding:14px;font-family:var(--font-main);color:var(--text)}
+.topbar{position:sticky;top:0;z-index:20;background:rgba(246,248,251,.9);backdrop-filter:blur(10px);display:flex;gap:12px;align-items:center;justify-content:space-between;padding:10px 0 12px;flex-wrap:wrap}
+.brand{display:flex;gap:10px;align-items:center}
+.logo{width:52px;height:52px;border-radius:16px;position:relative;overflow:hidden;box-shadow:var(--shadow);display:grid;place-items:center;font-size:27px;font-weight:900;color:#fff;flex:none;
+  background:linear-gradient(to bottom,var(--flag-green) 0 34%,var(--flag-yellow) 34% 67%,var(--flag-red) 67% 100%)}
+.logo span{position:relative;z-index:2;text-shadow:0 1px 3px rgba(0,0,0,.45),0 0 1px rgba(0,0,0,.6)}
+h1,h2,h3,h4,p{margin-top:0;font-family:var(--font-display)}
+.brand h1{font-size:1.22rem;margin-bottom:2px;letter-spacing:.2px}
+.brand small{color:var(--muted)}
+.controls{display:flex;gap:8px;flex-wrap:wrap}
+.pill,.secondary,.primary,.ghost{border-radius:12px;padding:10px 13px;border:1px solid var(--line);background:var(--card);color:var(--text)}
+.primary{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:800;box-shadow:var(--btn-shadow)}
+.primary:hover{transform:translateY(var(--btn-lift))}
+.secondary{font-weight:700}
+.ghost{background:transparent}
+.hero{display:grid;grid-template-columns:1.45fr 1fr;gap:18px;background:linear-gradient(135deg,var(--card),var(--accentsoft));border:1px solid var(--line);border-radius:var(--radius-lg);padding:24px;box-shadow:var(--shadow)}
+.hero h2{font-size:2rem;margin-bottom:8px;font-family:var(--font-display)}
+.hero p{color:var(--muted);font-size:1.02rem}
+.hero-actions,.inline{display:flex;gap:9px;flex-wrap:wrap;align-items:center}
+.progress-card,.card,.panel,.unit,.mini{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);color:var(--text)}
+.progress-card{padding:16px}
+.progress-head{display:flex;justify-content:space-between;font-weight:800}
+.bar{height:12px;background:#eef1f4;border-radius:999px;overflow:hidden;margin:10px 0}
+.bar>div{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));width:0;transition:width .4s ease}
+.muted{color:var(--muted)}
+.section{margin-top:22px}
+.section h3{font-family:var(--font-display)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+.card{padding:17px;box-shadow:0 2px 8px rgba(16,24,40,.03)}
+.card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.icon{font-size:2rem;display:inline-block}
+.card h4{margin:9px 0 5px;font-family:var(--font-display)}
+.card p{color:var(--muted)}
+.card button{width:100%}
+.path{display:flex;gap:12px;overflow:auto;padding-bottom:8px}
+.unit{min-width:210px;padding:16px}
+.badge{display:inline-block;border-radius:999px;padding:5px 8px;background:var(--accentsoft);color:var(--ok);font-size:.78rem;font-weight:900}
+.panel{display:none;padding:20px;margin-top:18px;box-shadow:var(--shadow)}
+.panel.active{display:block;animation:panel-in .25s ease}
+@keyframes panel-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.panel-head{display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.close{border:0;background:#f2f4f7;border-radius:10px;padding:8px 11px}
+.tabs{display:flex;gap:8px;overflow:auto;padding:4px 0 10px}
+.tab{white-space:nowrap;border:1px solid var(--line);background:var(--card);color:var(--text);padding:9px 12px;border-radius:999px;font-weight:700}
+.tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.vocab-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.vocab{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px;text-align:center}
+.pic{font-size:2.7rem}
+.amh{font-size:1.5rem;font-weight:900;margin:4px 0}
+.eng{color:var(--muted)}
+.game-picker{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
+.game-choice{padding:12px;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--text);font-weight:800}
+.game-choice.active{background:var(--accentsoft);border-color:var(--accent);color:var(--ok)}
+.game-stage{border:1px dashed var(--line);border-radius:18px;padding:16px;background:var(--card)}
+.game-toolbar{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:4px}
+.round-note{font-size:.92rem;color:var(--muted)}
+.match-board{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.image-slots,.word-bank{display:grid;gap:10px}
+.image-slot{min-height:108px;border:2px dashed var(--line);background:var(--card);border-radius:16px;padding:12px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.image-slot .slot-pic{font-size:3rem}
+.image-slot .label{font-weight:700;color:var(--muted)}
+.image-slot.dragover{border-color:var(--blue);background:#eef4ff}
+.image-slot.correct{border-color:#75c69a;background:#ecfdf3}
+.word-tile{border:1px solid var(--line);border-radius:13px;background:var(--card);color:var(--text);padding:13px;text-align:center;font-size:1.22rem;font-weight:900;box-shadow:0 3px 8px rgba(16,24,40,.05);touch-action:none}
+.word-tile[draggable="true"]{cursor:grab}
+.word-tile.selected{outline:3px solid #93b4ff}
+.word-tile.used{opacity:.35;pointer-events:none}
+.feedback{min-height:26px;margin-top:10px;font-weight:800}
+.feedback.ok{color:var(--ok)}
+.feedback.bad{color:var(--danger)}
+.quiz-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.quiz-option{padding:14px;border:1px solid var(--line);border-radius:13px;background:var(--card);color:var(--text)}
+.quiz-option.correct{background:#ecfdf3;border-color:#75c69a;color:#0d3b26}
+.quiz-option.wrong{background:#fff1f0;border-color:#f0b4ae;color:#5b1712}
+.prompt-card{text-align:center;padding:20px}
+.prompt-big{font-size:3rem;font-weight:900;margin:8px 0}
+.builder-bank{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.letter-chip{padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--text);font-size:1.4rem;font-weight:900}
+.letter-chip:disabled{opacity:.35}
+.answer-line{min-height:60px;border:2px dashed var(--line);border-radius:14px;margin:12px auto;padding:10px;max-width:620px;font-size:1.5rem;font-weight:900}
+.fidel-controls{display:flex;gap:8px;flex-wrap:wrap}
+.fidel-row{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-top:12px}
+.fidel-btn{padding:16px 6px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--text);font-size:1.8rem;font-weight:800}
+.fidel-btn:hover{background:var(--accentsoft)}
+.big-letter{font-size:5rem;text-align:center;margin:12px 0}
+.family-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+.family-cell{padding:9px 4px;border-bottom:1px solid var(--line);text-align:center;font-size:1.25rem}
+.lesson-list{display:grid;gap:10px}
+.lesson{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:13px;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+.lesson-num{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--accentsoft);color:var(--ok);font-weight:900}
+.conversation{display:grid;gap:10px}
+.bubble{max-width:760px;border-radius:16px;padding:13px 15px;background:var(--accentsoft);color:var(--text)}
+.bubble.me{margin-left:auto;background:var(--card);border:1px solid var(--line)}
+.bubble .am{font-size:1.25rem;font-weight:800}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.stat{padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+.stat strong{display:block;font-size:1.35rem}
+.footer{text-align:center;color:var(--muted);padding:30px 10px}
+.sr{position:absolute;left:-9999px}
+.trace-layout{display:grid;grid-template-columns:320px 1fr;gap:18px;align-items:start}
+.trace-side{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px}
+.trace-family-strip{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin:12px 0}
+.trace-letter-btn{min-height:64px;border:2px solid var(--line);border-radius:13px;background:var(--card);color:var(--text);font-size:2rem;font-weight:900}
+.trace-letter-btn.active{border-color:var(--accent);background:var(--accentsoft);color:var(--ok)}
+.trace-canvas-wrap{position:relative;min-height:430px;border:2px solid var(--line);border-radius:18px;background:#fff;overflow:hidden;touch-action:none}
+.trace-guide{position:absolute;inset:0;display:grid;place-items:center;font-size:19rem;font-weight:900;color:rgba(16,24,40,.10);pointer-events:none;user-select:none}
+.trace-canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none}
+.trace-current{text-align:center;font-size:2.2rem;font-weight:900;margin:4px 0}
+.trace-help{color:var(--muted);font-size:.95rem}
+.trace-nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.trace-tools{display:flex;gap:8px;flex-wrap:wrap;justify-content:space-between;align-items:center;margin-bottom:10px}
+.trace-complete{padding:10px 12px;border-radius:12px;background:#ecfdf3;color:var(--ok);font-weight:800;display:none}
+.toast{position:fixed;left:50%;top:18px;transform:translateX(-50%) translateY(-16px);background:var(--card);color:var(--text);border:1px solid var(--line);border-radius:16px;padding:12px 20px;box-shadow:var(--shadow);z-index:200;display:flex;gap:10px;align-items:center;font-weight:900;opacity:0;transition:all .35s ease;pointer-events:none}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .toast .toast-icon{font-size:1.7rem}
 .confetti-piece{position:fixed;top:-12px;width:8px;height:14px;z-index:190;border-radius:2px;pointer-events:none;animation:confetti-fall linear forwards}
@@ -15,7 +148,7 @@
 .flame{display:inline-block;animation:pulse 1.6s ease-in-out infinite}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.25)}}
 .badge-summary{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:14px}
-.badge-count{background:#fbfcfd;border:1px solid var(--line);border-radius:14px;padding:10px 16px;text-align:center;font-size:1.1rem;min-width:84px}
+.badge-count{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 16px;text-align:center;font-size:1.1rem;min-width:84px}
 .badge-count strong{display:block;font-size:1.3rem}
 .badge-count span{color:var(--muted);font-size:.78rem}
 .badge-grid{display:flex;flex-wrap:wrap;gap:8px}
@@ -25,25 +158,106 @@
 .badge-chip.badge-gold{background:#fdf3d8;color:#946200}
 .badge-chip.badge-platinum{background:#eaf3ff;color:#1c4a96}
 select:disabled{cursor:not-allowed}
-@media(max-width:980px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.vocab-grid{grid-template-columns:repeat(3,1fr)}.game-picker{grid-template-columns:repeat(2,1fr)}.trace-layout{grid-template-columns:1fr}.trace-canvas-wrap{min-height:390px}.trace-guide{font-size:15rem}}
+
+/* ===== Resources & Culture panel ===== */
+.fact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:20px}
+.fact-card{background:var(--accentsoft);border:1px solid var(--line);border-radius:14px;padding:14px}
+.fact-card b{display:block;margin-bottom:4px}
+.proverb{border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:10px;background:var(--card)}
+.proverb .am{font-size:1.25rem;font-weight:900;margin-bottom:4px}
+.proverb .translit{color:var(--muted);font-style:italic;font-size:.88rem;margin-bottom:4px}
+.proverb .eng{color:var(--text)}
+
+/* ===== Sound toggle ===== */
+.sound-toggle{display:flex;align-items:center;gap:6px}
+
+/* ===================================================== */
+/* ================= THEME: TEEN ======================= */
+/* ===================================================== */
+body.body-teen{background:radial-gradient(circle at 15% 0%,#241b4a 0%,#140f28 45%,#0d0a1c 100%)}
+.mode-teen{
+  --bg:#140f28;--card:#1d1638;--text:#f1eefc;--muted:#a79bd0;--line:#332a5a;
+  --accent:#7c5cff;--accent2:#28e0c4;--accentsoft:#241c46;
+  --gold:#ffcf5c;--blue:#5aa2ff;--danger:#ff6b81;--ok:#28e0c4;
+  --shadow:0 14px 38px rgba(124,92,255,.35);
+  --font-main:'Manrope',system-ui,sans-serif;--font-display:'Manrope',system-ui,sans-serif;
+  --btn-shadow:0 0 0 1px rgba(124,92,255,.4),0 6px 18px rgba(124,92,255,.35);--btn-lift:-2px;
+}
+.mode-teen .topbar{background:rgba(20,15,40,.75)}
+.mode-teen .hero{background:linear-gradient(135deg,#241c46,#1a1433);border-color:#3a2f66}
+.mode-teen .trace-canvas-wrap,.mode-teen .trace-guide{background:#0f0b22}
+.mode-teen .trace-guide{color:rgba(255,255,255,.08)}
+.mode-teen .primary{background:linear-gradient(90deg,var(--accent),#a37bff)}
+.mode-teen .card:hover,.mode-teen .quiz-option:hover,.mode-teen .game-choice:hover{box-shadow:0 0 0 1px var(--accent),0 10px 26px rgba(124,92,255,.28)}
+.mode-teen .badge-chip.badge-platinum{background:#22314f;color:#8fd3ff}
+.mode-teen .badge-chip.badge-gold{background:#3a3116;color:#ffcf5c}
+.mode-teen .badge-chip.badge-silver{background:#2a2740;color:#c9c2e6}
+.mode-teen .badge-chip.badge-bronze{background:#3a2418;color:#e2a577}
+.mode-teen .fact-card{background:#241c46}
+
+/* ===================================================== */
+/* ================= THEME: KIDS ======================== */
+/* ===================================================== */
+body.body-kids{background:
+  radial-gradient(circle at 90% 0%, #ffe7bf 0%, transparent 45%),
+  radial-gradient(circle at 0% 100%, #c9f3ea 0%, transparent 45%),
+  #fff8ea}
+.mode-kids{
+  --bg:#fff8ea;--card:#ffffff;--text:#3a2b17;--muted:#8a7457;--line:#ffe1a0;
+  --accent:#0eb39e;--accent2:#ff7a45;--accentsoft:#e3faf5;
+  --gold:#ffb400;--blue:#3aa0ff;--danger:#ff5c5c;--ok:#12b76a;
+  --shadow:0 8px 0 rgba(58,43,23,.10);
+  --font-main:'Baloo 2',system-ui,sans-serif;--font-display:'Baloo 2',system-ui,sans-serif;
+  --btn-shadow:0 4px 0 rgba(0,0,0,.15);--btn-lift:-2px;--radius-lg:26px;--radius-md:20px;
+}
+.mode-kids .app{font-weight:600}
+.mode-kids .topbar{background:rgba(255,248,234,.9)}
+.mode-kids .logo{width:60px;height:60px;border-radius:20px;transform:rotate(-4deg);box-shadow:0 6px 0 rgba(58,43,23,.15)}
+.mode-kids .brand h1{font-size:1.5rem}
+.mode-kids .hero{background:linear-gradient(135deg,#fffdf6,#e3faf5);border:3px solid #ffe1a0;border-radius:32px}
+.mode-kids .hero h2{font-size:1.8rem}
+.mode-kids .pill,.mode-kids .secondary,.mode-kids .primary,.mode-kids .ghost{border-radius:999px;border-width:2px;font-weight:800}
+.mode-kids .primary{border-bottom:4px solid #086b5e}
+.mode-kids .secondary{border-bottom:3px solid var(--line)}
+.mode-kids button:active{transform:translateY(2px) scale(.98)}
+.mode-kids .card{border:3px solid var(--line);border-radius:24px}
+.mode-kids .card:hover{transform:translateY(-3px) rotate(-1deg);box-shadow:0 10px 0 rgba(58,43,23,.10)}
+.mode-kids .card:hover .icon{animation:wiggle .5s ease}
+@keyframes wiggle{0%,100%{transform:rotate(0)}25%{transform:rotate(-10deg)}75%{transform:rotate(10deg)}}
+.mode-kids .icon{font-size:2.4rem}
+.mode-kids .vocab{border:2px solid var(--line);border-radius:18px}
+.mode-kids .vocab .pic{font-size:3.4rem}
+.mode-kids .amh{font-size:1.7rem}
+.mode-kids .unit{border:3px solid var(--line);border-radius:22px}
+.mode-kids .quiz-option{border-width:2px;border-radius:18px;font-weight:800}
+.mode-kids .quiz-option:hover{transform:scale(1.03)}
+.mode-kids .quiz-option.correct{animation:pop .3s ease}
+@keyframes pop{0%{transform:scale(1)}50%{transform:scale(1.08)}100%{transform:scale(1)}}
+.mode-kids .badge-chip{border-radius:999px;border-width:2px}
+.mode-kids .tab.active{border-radius:999px}
+.mode-kids .fidel-btn,.mode-kids .trace-letter-btn,.mode-kids .letter-chip{border-radius:16px;border-width:2px}
+.mode-kids .fact-card{border-radius:20px;border:2px solid var(--line)}
+
+@media(max-width:980px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.vocab-grid{grid-template-columns:repeat(3,1fr)}.game-picker{grid-template-columns:repeat(2,1fr)}.trace-layout{grid-template-columns:1fr}.trace-canvas-wrap{min-height:390px}.trace-guide{font-size:15rem}.fact-grid{grid-template-columns:1fr}}
 @media(max-width:650px){.app{padding:9px}.hero{padding:18px}.hero h2{font-size:1.55rem}.grid{grid-template-columns:1fr}.vocab-grid{grid-template-columns:repeat(2,1fr)}.match-board{grid-template-columns:1fr}.fidel-row,.family-grid{grid-template-columns:repeat(4,1fr)}.stats{grid-template-columns:repeat(2,1fr)}.quiz-grid{grid-template-columns:1fr}.brand h1{font-size:1rem}.image-slot{min-height:92px}.panel{padding:14px}}
 </style>
 </head>
 <body>
 <div class="app mode-kids" id="app">
 <header class="topbar">
-  <div class="brand"><div class="logo">ሀ</div><div><h1>አማርኛ እንማር</h1><small>Learn Amharic • Starter to Advanced</small></div></div>
-  <div class="controls"><select class="pill" id="levelSelect"><option>Starter</option><option>Beginner</option><option>Elementary</option><option>Intermediate</option><option>Advanced</option></select><select class="pill" id="modeSelect"><option value="kids">Kids</option><option value="teen">Teen</option><option value="adult">Adult</option></select><button class="pill" id="resetProgress">Reset Progress</button></div>
+  <div class="brand"><div class="logo"><span>ሀ</span></div><div><h1>አማርኛ እንማር</h1><small>Fidel Institute • Amharic, Starter to Advanced</small></div></div>
+  <div class="controls"><select class="pill" id="levelSelect"><option>Starter</option><option>Beginner</option><option>Elementary</option><option>Intermediate</option><option>Advanced</option></select><select class="pill" id="modeSelect"><option value="kids">Kids</option><option value="teen">Teen</option><option value="adult">Adult</option></select><label class="pill sound-toggle"><input type="checkbox" id="soundToggle" checked style="margin:0"/> 🔊</label><button class="pill" id="resetProgress">Reset Progress</button></div>
 </header>
-<section class="hero"><div><h2>Learn Amharic through pictures, sound, practice and real life.</h2><p>Master Fidel, build useful vocabulary, practice listening and writing, and progress into everyday conversation, reading and grammar. Now with 500+ practice questions per game type, correct/incorrect sound feedback, and earnable badges.</p><div class="hero-actions"><button class="primary" onclick="openPanel('learn')">Continue Learning</button><button class="secondary" onclick="openPanel('games')">Play a Game</button><button class="secondary" onclick="openPanel('placement')">Placement Test</button></div></div><div class="progress-card"><div class="progress-head"><span>Learning Progress</span><span id="xpText">0 XP</span></div><div class="bar"><div id="xpBar"></div></div><div class="muted" id="progressText">Start your first activity.</div></div></section>
+<section class="hero"><div><h2>Ethiopia's most complete digital home for Fidel — built like a language institution, not a study app.</h2><p>Master Fidel, build real vocabulary, practice listening and writing, and progress into everyday conversation, reading and grammar. 262 dictionary-checked words, six game modes with hundreds of never-repeating questions per topic, cheerful sound feedback, and earnable Bronze–Platinum badges for every skill you complete.</p><div class="hero-actions"><button class="primary" onclick="openPanel('learn')">Continue Learning</button><button class="secondary" onclick="openPanel('games')">Play a Game</button><button class="secondary" onclick="openPanel('resources')">Resources & Culture</button><button class="secondary" onclick="openPanel('placement')">Placement Test</button></div></div><div class="progress-card"><div class="progress-head"><span>Learning Progress</span><span id="xpText">0 XP</span></div><div class="bar"><div id="xpBar"></div></div><div class="muted" id="progressText">Start your first activity.</div></div></section>
 
 <section class="section"><h3>Learn your way</h3><div class="grid">
 <div class="card"><div class="icon">🛤️</div><h4>Guided Course</h4><p>Progress from Fidel and first words to conversation, reading, writing and grammar.</p><button class="secondary" onclick="openPanel('learn')">Open Course</button></div>
-<div class="card"><div class="icon">🖼️</div><h4>Picture Vocabulary</h4><p>248 words across 13 categories: animals, food, people, clothing, body parts, rooms, appliances, school, nature, transport, colors, daily life and numbers.</p><button class="secondary" onclick="openPanel('vocab')">Explore Vocabulary</button></div>
-<div class="card"><div class="icon">🎮</div><h4>Games & Exercises</h4><p>Six game types with 500+ question variations each — matching, listening, missing letters, word building, multiple choice and a Fidel quiz — plus sound feedback and badges.</p><button class="secondary" onclick="openPanel('games')">Play Games</button></div>
+<div class="card"><div class="icon">🖼️</div><h4>Picture Vocabulary</h4><p>262 words, checked against published Amharic dictionaries, across 14 categories: animals, food, people, clothing, body, home, kitchen, school, nature, transport, colors, daily life, numbers and days & time.</p><button class="secondary" onclick="openPanel('vocab')">Explore Vocabulary</button></div>
+<div class="card"><div class="icon">🎮</div><h4>Games & Exercises</h4><p>Six game types, each with hundreds of question variations. Every question is drawn from a shuffled pool that never repeats an item until the whole set has been used — plus sound feedback and badges.</p><button class="secondary" onclick="openPanel('games')">Play Games</button></div>
 <div class="card"><div class="icon">🔤</div><h4>Fidel Lab</h4><p>Practice all 34 Fidel families, seven orders, recognition and pronunciation.</p><button class="secondary" onclick="openPanel('fidel')">Open Fidel Lab</button></div>
 <div class="card"><div class="icon">✍️</div><h4>Tracing Practice</h4><p>Trace every Fidel family using a finger, mouse, or stylus. Move through all seven letters and all 34 families, earning a badge for each family.</p><button class="secondary" onclick="openPanel('tracing')">Start Tracing</button></div>
 <div class="card"><div class="icon">💬</div><h4>Conversations</h4><p>Greetings, family, home, food, shopping, school, travel and everyday situations.</p><button class="secondary" onclick="openPanel('conversation')">Practice Speaking</button></div>
+<div class="card"><div class="icon">📚</div><h4>Resources & Culture</h4><p>Dictionary-sourced Amharic proverbs, quick facts about the Fidel script, and notes on Ethiopian culture and the calendar.</p><button class="secondary" onclick="openPanel('resources')">Explore Resources</button></div>
 <div class="card"><div class="icon">🔁</div><h4>Review & Progress</h4><p>Review learned material, see XP and level, and browse every badge you've earned.</p><button class="secondary" onclick="openPanel('review')">Review Progress</button></div>
 </div></section>
 
@@ -51,7 +265,21 @@ select:disabled{cursor:not-allowed}
 
 <div class="panel" id="learn"><div class="panel-head"><div><h3>Guided Learning Course</h3><p class="muted">Short lessons that move from recognition to recall and real-world use.</p></div><button class="close" onclick="closePanels()">✕</button></div><div class="lesson-list" id="lessonList"></div></div>
 
-<div class="panel" id="vocab"><div class="panel-head"><div><h3>Picture Vocabulary</h3><p class="muted">Tap Listen to hear the Amharic word when supported by your device. Includes an "All Categories" tab with all 248 words.</p></div><button class="close" onclick="closePanels()">✕</button></div><div class="tabs" id="vocabTabs"></div><div class="vocab-grid" id="vocabGrid"></div></div>
+<div class="panel" id="vocab"><div class="panel-head"><div><h3>Picture Vocabulary</h3><p class="muted">Tap Listen to hear the Amharic word when supported by your device. Includes an "All Categories" tab with every word, checked against published Amharic dictionaries.</p></div><button class="close" onclick="closePanels()">✕</button></div><div class="tabs" id="vocabTabs"></div><div class="vocab-grid" id="vocabGrid"></div></div>
+
+<div class="panel" id="resources"><div class="panel-head"><div><h3>Resources & Culture</h3><p class="muted">A small library of facts, proverbs and background — sourced from published Amharic references — to go with your practice.</p></div><button class="close" onclick="closePanels()">✕</button></div>
+<h4>Did you know?</h4>
+<div class="fact-grid">
+<div class="fact-card"><b>🔡 34 base characters</b>The Fidel (ፊደል) has 34 consonant families, each with 7 vowel orders — so learning the chart unlocks roughly 238 syllable signs at once.</div>
+<div class="fact-card"><b>📜 An abugida, not an alphabet</b>Amharic script is an abugida: each symbol is a consonant+vowel pair, and the vowel changes the shape rather than adding a separate letter.</div>
+<div class="fact-card"><b>🗓️ Its own calendar</b>Ethiopia uses the Ethiopian calendar, which runs about 7–8 years behind the Gregorian calendar and starts its new year (Enkutatash) around September 11.</div>
+<div class="fact-card"><b>🌍 Second most-spoken Semitic language</b>With over 30 million native speakers, Amharic is one of the most widely spoken Semitic languages in the world, after Arabic.</div>
+<div class="fact-card"><b>✍️ Written left to right</b>Unlike its Semitic relatives Arabic and Hebrew, Amharic is written left to right, similar to English.</div>
+<div class="fact-card"><b>🎼 Its own numeral system</b>Ge'ez-derived Amharic numerals look nothing like Arabic numerals — the app currently teaches everyday counting using Arabic numerals, with native numerals planned.</div>
+</div>
+<h4>Amharic Proverbs</h4>
+<div id="proverbGrid"></div>
+</div>
 
 <div class="panel" id="games"><div class="panel-head"><div><h3>Games & Exercises</h3><p class="muted">Each round uses new items until the pool has been fully used. Correct and incorrect answers play a sound, and finishing a round can earn a Bronze, Silver, Gold or Platinum badge.</p></div><div><strong>Score: <span id="score">0</span></strong> · <span id="roundCount">Round 1</span></div><button class="close" onclick="closePanels()">✕</button></div>
 <div class="game-picker" id="gamePicker"></div><div class="inline"><label>Category <select class="pill" id="gameCategory"></select></label><label>Items / round <select class="pill" id="roundSize"><option>4</option><option selected>6</option><option>8</option><option>10</option></select></label><button class="secondary" onclick="startCurrentGame()">New Round</button></div><div class="game-stage" id="gameStage"></div></div>
@@ -64,7 +292,7 @@ select:disabled{cursor:not-allowed}
 <div class="panel" id="review"><div class="panel-head"><div><h3>Review & Progress</h3><p class="muted">Progress is saved on this device.</p></div><button class="close" onclick="closePanels()">✕</button></div><div class="stats" id="stats"></div><h4 style="margin-top:18px">🏅 Your Badges</h4><div id="badgeShelf"></div><h4 style="margin-top:18px">Quick Review</h4><div class="vocab-grid" id="reviewGrid"></div></div>
 
 <div class="panel" id="placement"><div class="panel-head"><div><h3>Placement Test</h3><p class="muted">A simple adaptive framework covering Fidel, common vocabulary, sentences and practical language.</p></div><button class="close" onclick="closePanels()">✕</button></div><div id="placementBody"><div class="prompt-card"><div class="prompt-big">ሀ</div><p>Do you recognize and read common Fidel characters?</p><div class="inline" style="justify-content:center"><button class="secondary" onclick="placementAnswer(0)">Not yet</button><button class="primary" onclick="placementAnswer(1)">Yes</button></div></div></div></div>
-<div class="footer">Single-file HTML app • Mobile friendly • GitHub Pages ready • Progress, badges and question history saved locally • Sound effects work fully offline</div>
+<div class="footer">Single-file HTML app • Mobile friendly • GitHub Pages ready • Progress, badges and question history saved locally • Sound effects work fully offline • Vocabulary checked against published Amharic dictionaries</div>
 </div>
 <script>
 const V={
@@ -80,12 +308,22 @@ Nature:[['sun','☀️','ፀሐይ','Sun'],['moon','🌙','ጨረቃ','Moon'],['
 Transport:[['car','🚗','መኪና','Car'],['bus','🚌','አውቶቡስ','Bus'],['bike','🚲','ብስክሌት','Bicycle'],['plane','✈️','አውሮፕላን','Airplane'],['train','🚆','ባቡር','Train'],['boat','⛵','ጀልባ','Boat'],['taxi','🚕','ታክሲ','Taxi'],['road','🛣️','መንገድ','Road'],['traffic','🚦','የትራፊክ መብራት','Traffic light'],['station','🚉','ጣቢያ','Station'],['motorcycle','🏍️','ሞተር ሳይክል','Motorcycle'],['truck','🚚','የጭነት መኪና','Truck'],['helicopter','🚁','ሄሊኮፕተር','Helicopter'],['ship','🚢','መርከብ','Ship'],['bridge','🌉','ድልድይ','Bridge'],['ticket','🎫','ትኬት','Ticket'],['airport','🛫','አውሮፕላን ማረፊያ','Airport'],['driver','🧑‍✈️','ሹፌር','Driver'],['wheel','🛞','ጎማ','Wheel'],['fuel','⛽','ነዳጅ','Fuel']],
 Colors:[['red','🟥','ቀይ','Red'],['green','🟩','አረንጓዴ','Green'],['yellow','🟨','ቢጫ','Yellow'],['blue','🟦','ሰማያዊ','Blue'],['black','⬛','ጥቁር','Black'],['white','⬜','ነጭ','White'],['orange2','🟧','ብርቱካናማ','Orange'],['purple','🟪','ሐምራዊ','Purple'],['brown','🟫','ቡናማ','Brown'],['pink','🌸','ሮዝ','Pink'],['gray','◻️','ግራጫ','Gray'],['rainbow','🌈','ቀስተ ደመና','Rainbow'],['gold','🟡','ወርቃማ','Gold'],['silver','⚪','ብርማ','Silver'],['navy','🔵','ጥቁር ሰማያዊ','Navy blue'],['turquoise','🔷','ላይ ሰማያዊ','Turquoise']],
 Daily:[['eat','🍽️','መብላት','Eat'],['drink','🥤','መጠጣት','Drink'],['sleep','😴','መተኛት','Sleep'],['read','📖','ማንበብ','Read'],['write','✍️','መጻፍ','Write'],['walk','🚶','መሄድ','Walk'],['run','🏃','መሮጥ','Run'],['sit','🪑','መቀመጥ','Sit'],['stand','🧍','መቆም','Stand'],['wash','🧼','መታጠብ','Wash'],['cook','👩‍🍳','ማብሰል','Cook'],['play','⚽','መጫወት','Play'],['jump','🤸','መዝለል','Jump'],['sing','🎤','መዘመር','Sing'],['dance','💃','መደነስ','Dance'],['laugh','😂','መሳቅ','Laugh'],['cry','😢','ማልቀስ','Cry'],['love','❤️','መውደድ','Love'],['study','🎓','ማጥናት','Study'],['help','🤝','መርዳት','Help']],
-Numbers:[['one','1️⃣','አንድ','One'],['two','2️⃣','ሁለት','Two'],['three','3️⃣','ሶስት','Three'],['four','4️⃣','አራት','Four'],['five','5️⃣','አምስት','Five'],['six','6️⃣','ስድስት','Six'],['seven','7️⃣','ሰባት','Seven'],['eight','8️⃣','ስምንት','Eight'],['nine','9️⃣','ዘጠኝ','Nine'],['ten','🔟','አስር','Ten'],['eleven','🔢','አስራ አንድ','Eleven'],['twelve','🔢','አስራ ሁለት','Twelve']]
+Numbers:[['one','1️⃣','አንድ','One'],['two','2️⃣','ሁለት','Two'],['three','3️⃣','ሶስት','Three'],['four','4️⃣','አራት','Four'],['five','5️⃣','አምስት','Five'],['six','6️⃣','ስድስት','Six'],['seven','7️⃣','ሰባት','Seven'],['eight','8️⃣','ስምንት','Eight'],['nine','9️⃣','ዘጠኝ','Nine'],['ten','🔟','አስር','Ten'],['eleven','🔢','አስራ አንድ','Eleven'],['twelve','🔢','አስራ ሁለት','Twelve']],
+Time:[['monday','📅','ሰኞ','Monday'],['tuesday','📅','ማክሰኞ','Tuesday'],['wednesday','📅','ረቡዕ','Wednesday'],['thursday','📅','ሐሙስ','Thursday'],['friday','📅','ዓርብ','Friday'],['saturday','📅','ቅዳሜ','Saturday'],['sunday','📅','እሁድ','Sunday'],['morning','🌅','ጠዋት','Morning'],['afternoon','🌤️','ከሰዓት','Afternoon'],['evening','🌆','ማታ','Evening'],['night','🌙','ለሊት','Night'],['today','📍','ዛሬ','Today'],['tomorrow','➡️','ነገ','Tomorrow'],['yesterday','⬅️','ትናንት','Yesterday']]
 };
 V.All=(function(){const seen=new Set(),out=[];Object.keys(V).forEach(cat=>{V[cat].forEach(item=>{if(!seen.has(item[0])){seen.add(item[0]);out.push(item)}})});return out})();
 
 const COURSE=[['Starter','Fidel & Sounds','Recognize Fidel families and their seven forms.'],['Starter','First Words','Common objects, people and actions.'],['Beginner','Greetings','Hello, names, polite expressions and simple replies.'],['Beginner','Family & People','Talk about family, age and relationships.'],['Beginner','Body & Clothing','Body parts, clothing and action commands.'],['Elementary','Food & Home','Meals, rooms, furniture and kitchen objects.'],['Elementary','Numbers, Time & School','Counting, days, time and school vocabulary.'],['Intermediate','Everyday Conversation','Shopping, directions, transportation and social situations.'],['Intermediate','Reading & Writing','Short passages, sentence building and dictation.'],['Advanced','Grammar & Expression','Verb patterns, agreement, richer vocabulary and composition.']];
 const FIDEL=[['ሀ','ሁ','ሂ','ሃ','ሄ','ህ','ሆ'],['ለ','ሉ','ሊ','ላ','ሌ','ል','ሎ'],['ሐ','ሑ','ሒ','ሓ','ሔ','ሕ','ሖ'],['መ','ሙ','ሚ','ማ','ሜ','ም','ሞ'],['ሠ','ሡ','ሢ','ሣ','ሤ','ሥ','ሦ'],['ረ','ሩ','ሪ','ራ','ሬ','ር','ሮ'],['ሰ','ሱ','ሲ','ሳ','ሴ','ስ','ሶ'],['ሸ','ሹ','ሺ','ሻ','ሼ','ሽ','ሾ'],['ቀ','ቁ','ቂ','ቃ','ቄ','ቅ','ቆ'],['በ','ቡ','ቢ','ባ','ቤ','ብ','ቦ'],['ቨ','ቩ','ቪ','ቫ','ቬ','ቭ','ቮ'],['ተ','ቱ','ቲ','ታ','ቴ','ት','ቶ'],['ቸ','ቹ','ቺ','ቻ','ቼ','ች','ቾ'],['ኀ','ኁ','ኂ','ኃ','ኄ','ኅ','ኆ'],['ነ','ኑ','ኒ','ና','ኔ','ን','ኖ'],['ኘ','ኙ','ኚ','ኛ','ኜ','ኝ','ኞ'],['አ','ኡ','ኢ','ኣ','ኤ','እ','ኦ'],['ከ','ኩ','ኪ','ካ','ኬ','ክ','ኮ'],['ኸ','ኹ','ኺ','ኻ','ኼ','ኽ','ኾ'],['ወ','ዉ','ዊ','ዋ','ዌ','ው','ዎ'],['ዐ','ዑ','ዒ','ዓ','ዔ','ዕ','ዖ'],['ዘ','ዙ','ዚ','ዛ','ዜ','ዝ','ዞ'],['ዠ','ዡ','ዢ','ዣ','ዤ','ዥ','ዦ'],['የ','ዩ','ዪ','ያ','ዬ','ይ','ዮ'],['ደ','ዱ','ዲ','ዳ','ዴ','ድ','ዶ'],['ጀ','ጁ','ጂ','ጃ','ጄ','ጅ','ጆ'],['ገ','ጉ','ጊ','ጋ','ጌ','ግ','ጎ'],['ጠ','ጡ','ጢ','ጣ','ጤ','ጥ','ጦ'],['ጨ','ጩ','ጪ','ጫ','ጬ','ጭ','ጮ'],['ጰ','ጱ','ጲ','ጳ','ጴ','ጵ','ጶ'],['ጸ','ጹ','ጺ','ጻ','ጼ','ጽ','ጾ'],['ፀ','ፁ','ፂ','ፃ','ፄ','ፅ','ፆ'],['ፈ','ፉ','ፊ','ፋ','ፌ','ፍ','ፎ'],['ፐ','ፑ','ፒ','ፓ','ፔ','ፕ','ፖ']];
+const PROVERBS=[
+['የለማኝ ቅንጡ ይላል ወተት አምጡ','Yelemagn qntu yilal wetet amtu','"Beggars can\'t be choosers."'],
+['የስጦታ ፈረስ ጥርሱ አይታይም','Yestota feres trsu aytaym','"Don\'t look a gift horse in the mouth."'],
+['ማየት ማመን ነው','Mayat mamen new','"Seeing is believing."'],
+['የሚያብረቀርቅ ሁሉ ወርቅ አይደለም','Yemibreqerq hulu werq aydelem','"All that glitters is not gold."'],
+['ጊዜ ወርቅ ነው','Gize werq new','"Time is gold."'],
+['ሰው የዘራውን ያጭዳል','Sew yezerawn yachdal','"As you sow, so shall you reap."']
+];
+function renderProverbs(){document.getElementById('proverbGrid').innerHTML=PROVERBS.map(p=>`<div class="proverb"><div class="am">${p[0]}</div><div class="translit">${p[1]}</div><div class="eng">${p[2]}</div></div>`).join('')}
 const CONV={Greetings:[['👋','ሰላም!','Hello!'],['🙂','እንዴት ነህ? / ነሽ?','How are you?'],['🙂','ደህና ነኝ።','I am fine.'],['🙏','አመሰግናለሁ።','Thank you.'],['👋','ደህና ሁን / ሁኚ።','Goodbye.']],Home:[['🏠','ይህ ቤቴ ነው።','This is my house.'],['🪑','ወንበሩ የት ነው?','Where is the chair?'],['🚪','በሩን ዝጋ።','Close the door.'],['💡','መብራቱን አብራ።','Turn on the light.']],Food:[['🍽️','ምን መብላት ትፈልጋለህ?','What would you like to eat?'],['💧','ውሃ እፈልጋለሁ።','I would like water.'],['☕','ቡና ትፈልጋለህ?','Would you like coffee?'],['🙏','አዎ፣ አመሰግናለሁ።','Yes, thank you.']],Shopping:[['🛒','ይህ ስንት ነው?','How much is this?'],['💵','ውድ ነው።','It is expensive.'],['🤲','ይህን እፈልጋለሁ።','I would like this.'],['🙏','አመሰግናለሁ።','Thank you.']],Travel:[['🚕','ታክሲ የት ነው?','Where is the taxi?'],['🛣️','ይህ መንገድ ወዴት ይሄዳል?','Where does this road go?'],['🚌','አውቶቡሱ መቼ ይመጣል?','When does the bus come?'],['📍','እዚህ አቁም፣ እባክህ።','Stop here, please.']]};
 
 let P=JSON.parse(localStorage.getItem('amhProgress')||'{"xp":0,"rounds":0,"mastered":0,"streak":1,"badges":{}}');
@@ -101,16 +339,27 @@ function renderProgress(){
   document.getElementById('score').textContent=gameState.score;
 }
 function shuffle(a){let r=[...a];for(let i=r.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[r[i],r[j]]=[r[j],r[i]]}return r}
-function openPanel(id){document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');if(id==='review')renderReview();if(id==='tracing')setTimeout(setupTraceCanvas,60);document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'})}
+function openPanel(id){document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');if(id==='review')renderReview();if(id==='resources')renderProverbs();if(id==='tracing')setTimeout(setupTraceCanvas,60);document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'})}
 function closePanels(){document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'))}
 function speak(t){if('speechSynthesis'in window){let u=new SpeechSynthesisUtterance(t);u.lang='am-ET';speechSynthesis.cancel();speechSynthesis.speak(u)}}
 
 // ===== sound effects (Web Audio API — no external files, works fully offline) =====
 let actx=null;
 function ensureAudio(){if(!actx){try{actx=new (window.AudioContext||window.webkitAudioContext)()}catch(e){actx=null}}return actx}
-function beep(freq,dur,type,startDelay,vol){const ctx=ensureAudio();if(!ctx)return;const t0=ctx.currentTime+(startDelay||0);const osc=ctx.createOscillator();const gain=ctx.createGain();osc.type=type||'sine';osc.frequency.setValueAtTime(freq,t0);gain.gain.setValueAtTime(0,t0);gain.gain.linearRampToValueAtTime(vol||0.18,t0+0.01);gain.gain.exponentialRampToValueAtTime(0.0001,t0+dur);osc.connect(gain);gain.connect(ctx.destination);osc.start(t0);osc.stop(t0+dur+0.03)}
-function playCorrectSound(){beep(523.25,0.12,'sine',0,0.16);beep(783.99,0.18,'sine',0.11,0.16)}
-function playIncorrectSound(){beep(220,0.16,'sawtooth',0,0.13);beep(174,0.22,'sawtooth',0.06,0.11)}
+let soundEnabled=(localStorage.getItem('amhSound')!=='off');
+function beep(freq,dur,type,startDelay,vol){if(!soundEnabled)return;const ctx=ensureAudio();if(!ctx)return;const t0=ctx.currentTime+(startDelay||0);const osc=ctx.createOscillator();const gain=ctx.createGain();osc.type=type||'sine';osc.frequency.setValueAtTime(freq,t0);gain.gain.setValueAtTime(0,t0);gain.gain.linearRampToValueAtTime(vol||0.18,t0+0.01);gain.gain.exponentialRampToValueAtTime(0.0001,t0+dur);osc.connect(gain);gain.connect(ctx.destination);osc.start(t0);osc.stop(t0+dur+0.03)}
+function playCorrectSound(){
+  // cheerful three-note ascending chime — designed to feel rewarding without being harsh
+  beep(523.25,0.11,'sine',0,0.15);
+  beep(659.25,0.11,'sine',0.09,0.15);
+  beep(987.77,0.22,'sine',0.18,0.17);
+}
+function playIncorrectSound(){
+  // soft two-tone "try again" cue — a gentle nudge, not a buzzer
+  beep(311.13,0.15,'triangle',0,0.12);
+  beep(246.94,0.2,'triangle',0.08,0.11);
+}
+function playClickSound(){beep(660,0.05,'sine',0,0.06)}
 
 // ===== badges (standard accuracy-based metrics, like most language apps) =====
 function tierRank(t){return {bronze:1,silver:2,gold:3,platinum:4}[t]||0}
@@ -409,8 +658,19 @@ function placementAnswer(v){
   placementBody.innerHTML=`<div class="prompt-card"><div class="prompt-big">${q[0]}</div><p>${q[1]}</p><div class="inline" style="justify-content:center"><button class="secondary" onclick="placementAnswer(0)">Not yet</button><button class="primary" onclick="placementAnswer(1)">Yes</button></div></div>`;
 }
 
-document.getElementById('modeSelect').addEventListener('change',e=>{const app=document.getElementById('app');app.classList.remove('mode-kids','mode-teen','mode-adult');app.classList.add('mode-'+e.target.value);localStorage.setItem('amhMode',e.target.value)});
-const savedMode=localStorage.getItem('amhMode');if(savedMode){document.getElementById('modeSelect').value=savedMode;document.getElementById('modeSelect').dispatchEvent(new Event('change'))}
+document.getElementById('modeSelect').addEventListener('change',e=>{
+  const app=document.getElementById('app');
+  app.classList.remove('mode-kids','mode-teen','mode-adult');
+  app.classList.add('mode-'+e.target.value);
+  document.body.classList.remove('body-kids','body-teen','body-adult');
+  document.body.classList.add('body-'+e.target.value);
+  localStorage.setItem('amhMode',e.target.value);
+  playClickSound();
+});
+const savedMode=localStorage.getItem('amhMode');if(savedMode){document.getElementById('modeSelect').value=savedMode;document.getElementById('modeSelect').dispatchEvent(new Event('change'))}else{document.body.classList.add('body-kids')}
+
+document.getElementById('soundToggle').checked=soundEnabled;
+document.getElementById('soundToggle').addEventListener('change',e=>{soundEnabled=e.target.checked;localStorage.setItem('amhSound',soundEnabled?'on':'off');if(soundEnabled)playClickSound()});
 document.getElementById('resetProgress').onclick=()=>{if(confirm('Reset saved learning progress, badges and unique-question history?')){localStorage.removeItem('amhProgress');P={xp:0,rounds:0,mastered:0,streak:1,badges:{}};gameState.pools={};gameState.score=0;gameState.round=1;renderProgress();startCurrentGame()}};
 renderProgress();startCurrentGame();
 </script>
